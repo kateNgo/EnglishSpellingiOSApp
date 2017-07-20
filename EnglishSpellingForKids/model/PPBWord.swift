@@ -7,40 +7,28 @@
 //
 
 import UIKit
-import CoreData
 
-class PPBWord: NSManagedObject {
+
+class PPBWord: Equatable {
     
-    func setEntity(word: String, imageFile: String, category: String, note: String) {
+    var word: String
+    var imageFile : String
+    var note : String
+    var category: PPBCategory
+    init(){
+        self.category = PPBCategory.fruit
+        self.imageFile = ""
+        self.note = ""
+        self.word = ""
+    }
+    init(word: String, imageFile: String, category: PPBCategory, note: String) {
         self.category = category
         self.imageFile = imageFile
         self.note = note
         self.word = word
-       
     }
     public static func ==(lWord: PPBWord, rWord: PPBWord)-> Bool{
         return lWord.word == rWord.word
     }
-    /*
-    class func findOrCreatedPPBWord(matching wordInfo: PPBWord, in context: NSManagedObjectContext) throws -> PPBWord {
-        let request : NSFetchRequest<PPBWord> = PPBWord.fetchRequest() as! NSFetchRequest<PPBWord>
-     //   request.predicate = NSPredicate(format: "word = %@",wordInfo.word)
-        do {
-            let matches = try context.fetch(request)
-            if matches.count > 0 {
-                assert(matches.count > 1, "This word already existed")
-                return matches[0]
-            }
-        }catch {
-            throw error
-        }
-        let word = PPBWord(context: context)
-        word.word = wordInfo.word
-        word.category = wordInfo.category
-        word.imageFile = wordInfo.imageFile
-        word.note = wordInfo.note
-        return word
-    }
-    
-*/
+   
 }

@@ -78,13 +78,11 @@ class ViewController: UIViewController {
             }
             result = result.appending( ch)
         }
-        if let word = currentWord.word  {
-            if result == word{
-                result = "welldone"
-                PPBWordService.doneItems.append(currentWord)
-            }else {
-                result = "tryagain"
-            }
+        if result == currentWord.word{
+            result = "welldone"
+            PPBWordService.doneItems.append(currentWord)
+        }else {
+            result = "tryagain"
         }
         return true
     }
@@ -97,10 +95,8 @@ class ViewController: UIViewController {
     
     func chooseWord(){
         currentWord = service.chooseRandomWord(words: words)
-        if let w = currentWord.word {
-            word = String (w.characters.sorted())
-            self.imageView.image = UIImage(named:currentWord.imageFile!)!
-        }
+        word = String (currentWord.word.characters.sorted())
+        self.imageView.image = UIImage(named:currentWord.imageFile)!
         clearConstraint()
         createOriginViews()
         createDestinationViews()

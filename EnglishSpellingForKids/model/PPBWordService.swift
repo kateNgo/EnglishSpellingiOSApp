@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-import CoreData
+
 import AudioToolbox
 
 enum PPBCategory: String {
@@ -41,181 +41,130 @@ enum PPBCategory: String {
 class PPBWordService {
 
     static var doneItems: [PPBWord] = []
-    var container : NSPersistentContainer? = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
-    
-     var  context: NSManagedObjectContext? {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return nil
-        }
-        return appDelegate.persistentContainer.viewContext
-    }
     
     func initFruitData() -> [PPBWord]{
         var data : [PPBWord] = []
-        if let context = self.context {
-            let apple = PPBWord.init( context: context)
-            apple.setEntity(word: "apple", imageFile: "apple.png", category: PPBCategory.fruit.value, note: "")
+        let apple = PPBWord.init(word: "apple", imageFile: "apple.png", category: PPBCategory.fruit, note: "")
             data.append(apple)
             
-            let grape = PPBWord.init(context: context)
-                grape.setEntity( word: "grape", imageFile: "grape.png", category: PPBCategory.fruit.value, note: "")
+        let grape = PPBWord.init( word: "grape", imageFile: "grape.png", category: PPBCategory.fruit, note: "")
             data.append(grape)
             
-            let banana = PPBWord.init(context: context)
-            banana.setEntity(word: "banana", imageFile: "banana.png", category: PPBCategory.fruit.value, note: "")
-            data.append(banana)
+        let banana = PPBWord.init(word: "banana", imageFile: "banana.png", category: PPBCategory.fruit, note: "")
+        data.append(banana)
             
-            let strawberry = PPBWord.init(context: context)
-            strawberry.setEntity (word: "strawberry", imageFile: "strawberry.png", category: PPBCategory.fruit.value, note: "")
-            data.append(strawberry)
+        let strawberry = PPBWord.init(word: "strawberry", imageFile: "strawberry.png", category: PPBCategory.fruit, note: "")
+        data.append(strawberry)
             
-            let avocado = PPBWord.init(context: context)
-            avocado.setEntity (word: "avocado", imageFile: "avocado.png", category: PPBCategory.fruit.value, note: "")
-            data.append(avocado)
+        let avocado = PPBWord.init (word: "avocado", imageFile: "avocado.png", category: PPBCategory.fruit, note: "")
+        data.append(avocado)
             
-            let cherry = PPBWord.init(context: context)
-            cherry.setEntity(word: "cherry", imageFile: "cherry.png", category: PPBCategory.fruit.value, note: "")
-            data.append(cherry)
+        let cherry = PPBWord.init(word: "cherry", imageFile: "cherry.png", category: PPBCategory.fruit, note: "")
+        data.append(cherry)
             
-            let kiwi = PPBWord.init(context: context)
-            kiwi.setEntity(word: "kiwi", imageFile: "kiwi.png", category: PPBCategory.fruit.value, note: "")
-            data.append(kiwi)
+        let kiwi = PPBWord.init(word: "kiwi", imageFile: "kiwi.png", category: PPBCategory.fruit, note: "")
+        data.append(kiwi)
             
-            let lemon = PPBWord.init(context: context)
-            lemon.setEntity (word: "lemon", imageFile: "lemon.png", category: PPBCategory.fruit.value, note: "")
-            data.append(lemon)
+        let lemon = PPBWord.init(word: "lemon", imageFile: "lemon.png", category: PPBCategory.fruit, note: "")
+        data.append(lemon)
             
-            let lime = PPBWord.init(context: context)
-            lime.setEntity (word: "lime", imageFile: "lime.png", category: PPBCategory.fruit.value, note: "")
-            data.append(lime)
+        let lime = PPBWord.init(word: "lime", imageFile: "lime.png", category: PPBCategory.fruit, note: "")
+        data.append(lime)
             
-            let orange = PPBWord.init(context: context)
-            orange.setEntity(word: "orange", imageFile: "orange.png", category: PPBCategory.fruit.value, note: "")
-            data.append(orange)
+        let orange = PPBWord.init(word: "orange", imageFile: "orange.png", category: PPBCategory.fruit, note: "")
+        data.append(orange)
             
-            let pear = PPBWord.init(context: context)
-             pear.setEntity(word: "pear", imageFile: "pear.png", category: PPBCategory.fruit.value, note: "")
-            data.append(pear)
+        let pear = PPBWord.init(word: "pear", imageFile: "pear.png", category: PPBCategory.fruit, note: "")
+        data.append(pear)
             
-            let plum = PPBWord.init(context: context)
-            plum.setEntity(word: "plum", imageFile: "plum.png", category: PPBCategory.fruit.value, note: "")
-            data.append(plum)
+        let plum = PPBWord.init(word: "plum", imageFile: "plum.png", category: PPBCategory.fruit, note: "")
+        data.append(plum)
             
-            let pomegranate = PPBWord.init(context: context)
-            pomegranate.setEntity (word: "pomegranate", imageFile: "pomegranate.png", category: PPBCategory.fruit.value, note: "")
-            data.append(pomegranate)
+        let pomegranate = PPBWord.init(word: "pomegranate", imageFile: "pomegranate.png", category: PPBCategory.fruit, note: "")
+        data.append(pomegranate)
             
-            let walnut = PPBWord.init(context: context)
-            walnut.setEntity (word: "walnut", imageFile: "walnut.png", category: PPBCategory.fruit.value, note: "")
-            data.append(walnut)
+        let walnut = PPBWord.init(word: "walnut", imageFile: "walnut.png", category: PPBCategory.fruit, note: "")
+        data.append(walnut)
             
-            let watermelon = PPBWord.init(context: context)
-            watermelon.setEntity (word: "watermelon", imageFile: "watermelon.png", category: PPBCategory.fruit.value, note: "")
-            data.append(watermelon)
-        }
+        let watermelon = PPBWord.init(word: "watermelon", imageFile: "watermelon.png", category: PPBCategory.fruit, note: "")
+        data.append(watermelon)
+        
         return data
         
     }
     func initAnimalData() -> [PPBWord]{
         var data : [PPBWord] = []
-        if let context = self.context {
+        let bat = PPBWord.init(word: "bat", imageFile: "bat.png", category: PPBCategory.animal, note: "")
+        data.append(bat)
             
-            let bat = PPBWord.init(context: context)
-            bat.setEntity (word: "bat", imageFile: "bat.png", category: PPBCategory.animal.value, note: "")
-            data.append(bat)
+        let bear = PPBWord.init (word: "bear", imageFile: "bear.png", category: PPBCategory.animal, note: "")
+        data.append(bear)
             
-            let bear = PPBWord.init(context: context)
-            bear.setEntity (word: "bear", imageFile: "bear.png", category: PPBCategory.animal.value, note: "")
-            data.append(bear)
+        let buffalo = PPBWord.init(word: "buffalo", imageFile: "buffalo.png", category: PPBCategory.animal, note: "")
+        data.append(buffalo)
             
-            let buffalo = PPBWord.init(context: context)
-            buffalo.setEntity (word: "buffalo", imageFile: "buffalo.png", category: PPBCategory.animal.value, note: "")
-            data.append(buffalo)
+        let bulldog = PPBWord.init(word: "bulldog", imageFile: "bulldog.png", category: PPBCategory.animal, note: "")
+        data.append(bulldog)
             
-            let bulldog = PPBWord.init(context: context)
-            bulldog.setEntity (word: "bulldog", imageFile: "bulldog.png", category: PPBCategory.animal.value, note: "")
-            data.append(bulldog)
+        let cat = PPBWord.init(word: "cat", imageFile: "cat.png", category: PPBCategory.animal, note: "")
+        data.append(cat)
             
-            let cat = PPBWord.init(context: context)
-            cat.setEntity (word: "cat", imageFile: "cat.png", category: PPBCategory.animal.value, note: "")
-            data.append(cat)
+        let cheetah = PPBWord.init (word: "cheetah", imageFile: "cheetah.png", category: PPBCategory.animal, note: "")
+        data.append(cheetah)
             
-            let cheetah = PPBWord.init(context: context)
-            cheetah.setEntity (word: "cheetah", imageFile: "cheetah.png", category: PPBCategory.animal.value, note: "")
-            data.append(cheetah)
+        let chicken = PPBWord.init(word: "chicken", imageFile: "chicken.png", category: PPBCategory.animal, note: "")
+        data.append(chicken)
             
-            let chicken = PPBWord.init(context: context)
-            chicken.setEntity (word: "chicken", imageFile: "chicken.png", category: PPBCategory.animal.value, note: "")
-            data.append(chicken)
+        let cow = PPBWord.init(word: "cow", imageFile: "cow.png", category: PPBCategory.animal, note: "")
+        data.append(cow)
             
-            let cow = PPBWord.init(context: context)
-            cow.setEntity(word: "cow", imageFile: "cow.png", category: PPBCategory.animal.value, note: "")
-            data.append(cow)
+        let crab = PPBWord.init(word: "crab", imageFile: "crab.png", category: PPBCategory.animal, note: "")
+        data.append(crab)
             
-            let crab = PPBWord.init(context: context)
-            crab.setEntity(word: "crab", imageFile: "crab.png", category: PPBCategory.animal.value, note: "")
-            data.append(crab)
+        let crocodile = PPBWord.init(word: "crocodile", imageFile: "crocodile.png", category: PPBCategory.animal, note: "")
+        data.append(crocodile)
             
-            let crocodile = PPBWord.init(context: context)
-            crocodile.setEntity(word: "crocodile", imageFile: "crocodile.png", category: PPBCategory.animal.value, note: "")
-            data.append(crocodile)
+        let crow = PPBWord.init(word: "crow", imageFile: "crow.png", category: PPBCategory.animal, note: "")
+        data.append(crow)
             
-            let crow = PPBWord.init(context: context)
-            crow.setEntity(word: "crow", imageFile: "crow.png", category: PPBCategory.animal.value, note: "")
-            data.append(crow)
+        let deer = PPBWord.init(word: "deer", imageFile: "deer.png", category: PPBCategory.animal, note: "")
+        data.append(deer)
             
-            let deer = PPBWord.init(context: context)
-            deer.setEntity(word: "deer", imageFile: "deer.png", category: PPBCategory.animal.value, note: "")
-            data.append(deer)
+        let dog = PPBWord.init(word: "dog", imageFile: "dog.png", category: PPBCategory.animal, note: "")
+        data.append(dog)
             
-            let dog = PPBWord.init(context: context)
-            dog.setEntity(word: "dog", imageFile: "dog.png", category: PPBCategory.animal.value, note: "")
-            data.append(dog)
+        let dolphin = PPBWord.init(word: "dolphin", imageFile: "dolphin.png", category: PPBCategory.animal, note: "")
+        data.append(dolphin)
             
-            let dolphin = PPBWord.init(context: context)
-            dolphin.setEntity(word: "dolphin", imageFile: "dolphin.png", category: PPBCategory.animal.value, note: "")
-            data.append(dolphin)
+        let duck = PPBWord.init(word: "duck", imageFile: "duck.png", category: PPBCategory.animal, note: "")
+        data.append(duck)
             
-            let duck = PPBWord.init(context: context)
-            duck.setEntity(word: "duck", imageFile: "duck.png", category: PPBCategory.animal.value, note: "")
-            data.append(duck)
+        let eagle = PPBWord.init(word: "eagle", imageFile: "eagle.png", category: PPBCategory.animal, note: "")
+        data.append(eagle)
             
-            let eagle = PPBWord.init(context: context)
-            eagle.setEntity(word: "eagle", imageFile: "eagle.png", category: PPBCategory.animal.value, note: "")
-            data.append(eagle)
+        let elephant = PPBWord.init(word: "elephant", imageFile: "elephant.png", category: PPBCategory.animal, note: "")
+        data.append(elephant)
             
-            let elephant = PPBWord.init(context: context)
-            elephant.setEntity(word: "elephant", imageFile: "elephant.png", category: PPBCategory.animal.value, note: "")
-            data.append(elephant)
+        let fish = PPBWord.init(word: "fish", imageFile: "fish.png", category: PPBCategory.animal, note: "")
+        data.append(fish)
             
-            let fish = PPBWord.init(context: context)
-            fish.setEntity(word: "fish", imageFile: "fish.png", category: PPBCategory.animal.value, note: "")
-            data.append(fish)
+        let fox = PPBWord.init(word: "fox", imageFile: "fox.png", category: PPBCategory.animal, note: "")
+        data.append(fox)
             
-            let fox = PPBWord.init(context: context)
-            fox.setEntity(word: "fox", imageFile: "fox.png", category: PPBCategory.animal.value, note: "")
-            data.append(fox)
+        let horse = PPBWord.init(word: "horse", imageFile: "horse.png", category: PPBCategory.animal, note: "")
+        data.append(horse)
             
-            let horse = PPBWord.init(context: context)
-            horse.setEntity(word: "horse", imageFile: "horse.png", category: PPBCategory.animal.value, note: "")
-            data.append(horse)
+        let kangaroo = PPBWord.init(word: "kangaroo", imageFile: "kangaroo.png", category: PPBCategory.animal, note: "")
+        data.append(kangaroo)
             
-            let kangaroo = PPBWord.init(context: context)
-            kangaroo.setEntity(word: "kangaroo", imageFile: "kangaroo.png", category: PPBCategory.animal.value, note: "")
-            data.append(kangaroo)
+        let lion = PPBWord.init(word: "lion", imageFile: "lion.png", category: PPBCategory.animal, note: "")
+        data.append(lion)
             
-            let lion = PPBWord.init(context: context)
-            lion.setEntity(word: "lion", imageFile: "lion.png", category: PPBCategory.animal.value, note: "")
-            data.append(lion)
+        let monkey = PPBWord.init(word: "monkey", imageFile: "monkey.png", category: PPBCategory.animal, note: "")
+        data.append(monkey)
             
-            let monkey = PPBWord.init(context: context)
-            monkey.setEntity(word: "monkey", imageFile: "monkey.png", category: PPBCategory.animal.value, note: "")
-            data.append(monkey)
-            
-            let penguin = PPBWord.init(context: context)
-            penguin.setEntity(word: "penguin", imageFile: "penguin.png", category: PPBCategory.animal.value, note: "")
-            data.append(penguin)
-        }
+        let penguin = PPBWord.init(word: "penguin", imageFile: "penguin.png", category: PPBCategory.animal, note: "")
+        data.append(penguin)
         return data
         
     }
@@ -244,37 +193,6 @@ class PPBWordService {
             
         }
     }
-    func saveWords(withWord words: [PPBWord]){
-        for word in words {
-            if let context = word.managedObjectContext {
-                do{
-                    try context.save()
-                }catch {
-                    print("Canot create this word")
-                }
-            }
-        }
-    }
-    
-    func fetchData(){
-        if let context = self.context{
-            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "PPBWord")
-            do{
-                
-                let ppbWords = try context.fetch(fetchRequest)
-                for w in ppbWords {
-                    if let word = w as? PPBWord{
-                        print(word.word!)
-                     
-                    }
-                }
-            }catch{
-                print("fetching error")
-            }
- 
-        }
-    }
-    
     
     
 }

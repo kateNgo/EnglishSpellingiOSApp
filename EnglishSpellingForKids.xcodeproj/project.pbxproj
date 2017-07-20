@@ -10,7 +10,6 @@
 		641AC2391EF1FFF600859BB4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641AC2381EF1FFF600859BB4 /* AppDelegate.swift */; };
 		641AC23B1EF1FFF600859BB4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641AC23A1EF1FFF600859BB4 /* ViewController.swift */; };
 		641AC23E1EF1FFF600859BB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 641AC23C1EF1FFF600859BB4 /* Main.storyboard */; };
-		641AC2411EF1FFF600859BB4 /* EnglishSpellingForKids.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 641AC23F1EF1FFF600859BB4 /* EnglishSpellingForKids.xcdatamodeld */; };
 		641AC2431EF1FFF600859BB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 641AC2421EF1FFF600859BB4 /* Assets.xcassets */; };
 		641AC2461EF1FFF600859BB4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 641AC2441EF1FFF600859BB4 /* LaunchScreen.storyboard */; };
 		641AC2641EF220A600859BB4 /* LetterLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641AC2631EF220A600859BB4 /* LetterLabel.swift */; };
@@ -84,7 +83,6 @@
 		641AC2381EF1FFF600859BB4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		641AC23A1EF1FFF600859BB4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		641AC23D1EF1FFF600859BB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		641AC2401EF1FFF600859BB4 /* EnglishSpellingForKids.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EnglishSpellingForKids.xcdatamodel; sourceTree = "<group>"; };
 		641AC2421EF1FFF600859BB4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		641AC2451EF1FFF600859BB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		641AC2471EF1FFF600859BB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -194,7 +192,6 @@
 				641AC2421EF1FFF600859BB4 /* Assets.xcassets */,
 				641AC2441EF1FFF600859BB4 /* LaunchScreen.storyboard */,
 				641AC2471EF1FFF600859BB4 /* Info.plist */,
-				641AC23F1EF1FFF600859BB4 /* EnglishSpellingForKids.xcdatamodeld */,
 			);
 			path = EnglishSpellingForKids;
 			sourceTree = "<group>";
@@ -462,7 +459,6 @@
 				64D38DB41EFC7B460092A552 /* SwiftGif.swift in Sources */,
 				641AC2391EF1FFF600859BB4 /* AppDelegate.swift in Sources */,
 				641AC2661EF2221F00859BB4 /* LetterView.swift in Sources */,
-				641AC2411EF1FFF600859BB4 /* EnglishSpellingForKids.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -633,19 +629,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		641AC23F1EF1FFF600859BB4 /* EnglishSpellingForKids.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				641AC2401EF1FFF600859BB4 /* EnglishSpellingForKids.xcdatamodel */,
-			);
-			currentVersion = 641AC2401EF1FFF600859BB4 /* EnglishSpellingForKids.xcdatamodel */;
-			path = EnglishSpellingForKids.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 641AC22D1EF1FFF600859BB4 /* Project object */;
 }
