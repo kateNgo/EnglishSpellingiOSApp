@@ -37,6 +37,8 @@ class ViewController: UIViewController {
         fruit = service.initFruitData()
         animal = service.initAnimalData()
         words = animal
+        menuView.layer.shadowOpacity = 1
+        menuView.layer.shadowRadius = 6
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -46,8 +48,11 @@ class ViewController: UIViewController {
     @IBAction func menuShowing(_ sender: UIBarButtonItem) {
         if menuShown {
             leadingContraint.constant = 0
+            UIView.animate(withDuration: 0.3, animations: {
+                self.view.layoutIfNeeded()
+            })
         }else {
-            leadingContraint.constant = -140
+            leadingContraint.constant = -145
         }
         menuShown = !menuShown
     }
