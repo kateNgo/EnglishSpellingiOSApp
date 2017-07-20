@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import CoreData
+import AudioToolbox
 
 enum PPBCategory: String {
     case fruit
@@ -34,11 +35,12 @@ enum PPBCategory: String {
     var categories:[PPBCategory]{
         return  [PPBCategory.fruit, PPBCategory.furniture, PPBCategory.homeware,PPBCategory.animal, PPBCategory.people]
     }
-  
+    
 }
 
-
 class PPBWordService {
+
+    static var doneItems: [PPBWord] = []
     var container : NSPersistentContainer? = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
     
      var  context: NSManagedObjectContext? {
@@ -216,6 +218,31 @@ class PPBWordService {
         }
         return data
         
+    }
+    func chooseRandomWord(words: [PPBWord]) -> PPBWord{
+        if PPBWordService.doneItems.count == words.count {
+            PPBWordService.doneItems = []
+        }
+        while true {
+            let random = Int(arc4random_uniform(UInt32(words.count)))
+            if  !PPBWordService.doneItems.contains(words[random]){
+                return words[random]
+            }
+        }
+    }
+    func playSound(filename: String, repeat: Bool){
+        let ext = "wav"
+        if let soundURL = Bundle.main.url(forResource: filename, withExtension: ext){
+            var soundId: SystemSoundID = 0
+            AudioServicesCreateSystemSoundID(soundURL as CFURL, &soundId)
+            
+            AudioServicesAddSystemSoundCompletion(soundId, nil, nil, { (soundId, clientData) -> Void in
+                AudioServicesDisposeSystemSoundID(soundId)
+            }, nil)
+            
+            AudioServicesPlaySystemSound(soundId)
+            
+        }
     }
     func saveWords(withWord words: [PPBWord]){
         for word in words {

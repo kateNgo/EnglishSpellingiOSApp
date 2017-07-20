@@ -18,7 +18,9 @@ class PPBWord: NSManagedObject {
         self.word = word
        
     }
-    
+    public static func ==(lWord: PPBWord, rWord: PPBWord)-> Bool{
+        return lWord.word == rWord.word
+    }
     /*
     class func findOrCreatedPPBWord(matching wordInfo: PPBWord, in context: NSManagedObjectContext) throws -> PPBWord {
         let request : NSFetchRequest<PPBWord> = PPBWord.fetchRequest() as! NSFetchRequest<PPBWord>

@@ -11,74 +11,120 @@ import CoreData
 
 class ViewController: UIViewController {
 
+    @IBOutlet var leadingContraint: NSLayoutConstraint!
+    @IBOutlet var menuView: UIView!
     @IBOutlet var imageView: UIImageView!
-    
     @IBOutlet var originArea: UIView!
     @IBOutlet var destinationArea: UIView!
     
-    
+    var menuShown = true
     let paddingLetter: Double = 3.0
-    let margin: Double = 3.0
-    let textColor = UIColor.black
-    var currentWord: PPBWord?
+    var currentWord: PPBWord = PPBWord()
+    var word: String = ""
     var originalletters: [OriginalLetter] = []
     var destinationalLetters : [DestinationalLetter] = []
-    var destinationViews: [LetterView] = []
-    var originalViews: [LetterView] = []
     var originalStackView: UIStackView?
     var destinationalStackView : UIStackView?
-    
     var dragContext: DragContext?
-    var dragLetters: [UILabel] = []
-    var dropAreas: [UIView] = []
-    var draggedLetter : LetterView?
     var fruit: [PPBWord] = []
     var animal: [PPBWord] = []
     var words : [PPBWord] = []
+    var result = ""
+    let service = PPBWordService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let service = PPBWordService()
         fruit = service.initFruitData()
         animal = service.initAnimalData()
-        service.saveWords(withWord: fruit)
-        service.saveWords(withWord: animal)
         words = animal
-        chooseWord()
-        
-        
     }
     
-    @IBAction func doneButtonPress(_ sender: UIButton) {
+    override func viewDidAppear(_ animated: Bool) {
+        chooseWord()
+    }
+    
+    @IBAction func menuShowing(_ sender: UIBarButtonItem) {
+        if menuShown {
+            leadingContraint.constant = 0
+        }else {
+            leadingContraint.constant = -140
+        }
+        menuShown = !menuShown
+    }
+    
+    @IBAction func menuItemSelecting(_ sender: UIButton) {
+        switch sender.currentTitle! {
+        case "Fruit":
+            words = fruit
+        default:
+            words = animal
+        }
+        leadingContraint.constant = -140
+        menuShown = true
+        PPBWordService.doneItems = []
+        chooseWord()
+    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        result = ""
         for letter in destinationalLetters{
-            if letter.text == "" {
-                // display alert message
-                return
+            guard let ch = letter.text, ch != "" else {
+                return false
+            }
+            result = result.appending( ch)
+        }
+        if let word = currentWord.word  {
+            if result == word{
+                result = "welldone"
+                PPBWordService.doneItems.append(currentWord)
+            }else {
+                result = "tryagain"
             }
         }
-        self.performSegue(withIdentifier: "showResultScreen", sender: self)
+        return true
     }
-    func chooseWord(){
-        
-        let random = getRandom(words.count)
-        currentWord = words[random]
-        if let word = currentWord {
-            self.imageView.image = UIImage(named:word.imageFile!)!
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let controller = segue.destination as? ResultViewController {
+            controller.result = result
         }
+    }
+    
+    func chooseWord(){
+        currentWord = service.chooseRandomWord(words: words)
+        if let w = currentWord.word {
+            word = String (w.characters.sorted())
+            self.imageView.image = UIImage(named:currentWord.imageFile!)!
+        }
+        clearConstraint()
         createOriginViews()
         createDestinationViews()
         setupGestures()
     }
     
+    func clearConstraint(){
+        var constraints = originArea.constraints
+        originArea.removeConstraints(constraints)
+        var subViews = originArea.subviews
+        for sub in subViews{
+            sub.removeFromSuperview()
+        }
+        originalletters = []
+        constraints = destinationArea .constraints
+        destinationArea.removeConstraints(constraints)
+        subViews = destinationArea.subviews
+        for sub in subViews{
+            sub.removeFromSuperview()
+        }
+        destinationalLetters = []
+    }
+    
     func createOriginViews() {
-        if let word = currentWord {
-            let numberOfLetter = word.word!.characters.count
-            for i in 0..<numberOfLetter{
-                let label = OriginalLetter.init(withText: word.word![i])
-                label.index = i
-                originalletters.append(label)
-            }
+        let numberOfLetter = word.characters.count
+        for i in 0..<numberOfLetter{
+            let label = OriginalLetter.init(withText: word[i])
+            label.index = i
+            originalletters.append(label)
         }
         originalStackView = makeStackView(listOfLabel: originalletters, in: originArea)
         if let stack = originalStackView {
@@ -88,15 +134,15 @@ class ViewController: UIViewController {
         originArea.updateConstraints()
         
     }
+    
     func createDestinationViews() {
-        if let word = currentWord {
-            let numberOfLetter = word.word!.characters.count
+        
+            let numberOfLetter = word.characters.count
             for _ in 0..<numberOfLetter{
                 let label = DestinationalLetter.init(withText: "")
                 label.backgroundColor = UIColor.brown
                 destinationalLetters.append(label)
             }
-        }
         destinationalStackView = makeStackView(listOfLabel: destinationalLetters, in: destinationArea)
         if let stack = destinationalStackView {
             setupConstraints(stackView: stack, superView:destinationArea)
@@ -112,7 +158,6 @@ class ViewController: UIViewController {
         pan.minimumNumberOfTouches = 1
         self.view.addGestureRecognizer(pan)
     }
-    
     
     func pan(_ rec:UIPanGestureRecognizer) {
         switch rec.state {
@@ -159,23 +204,29 @@ class ViewController: UIViewController {
             dragContext = nil
         }
     }
+    
     private func droppableLetterToDestination(ForDraggedView viewBeingDraggedView: LetterLabel,withRecognizer  rec: UIPanGestureRecognizer) -> Bool{
         var droppedViewInKnownArea = false
         for destinationalLetter in destinationalLetters {
             let pointInDropView = rec.location(in: destinationalLetter)
             if destinationalLetter.point(inside: pointInDropView, with: nil){
-                droppedViewInKnownArea = true
-                viewBeingDraggedView.removeFromSuperview()
-                destinationalLetter.text = viewBeingDraggedView.text
+                if destinationalLetter.text == "" {
+                    droppedViewInKnownArea = true
+                    viewBeingDraggedView.removeFromSuperview()
+                    destinationalLetter.text = viewBeingDraggedView.text
+                    service.playSound(filename: "drop", repeat: true)
+                }
             }
         }
         return droppedViewInKnownArea
     }
+    
     private func returnOriginalLetter(ForDraggedView viewBeingDraggedView: LetterLabel,withRecognizer  rec: UIPanGestureRecognizer){
         for letter in originalletters {
             if letter.text == viewBeingDraggedView.text && letter.textColor == LetterColor.originalLetterDragged.value {
                 viewBeingDraggedView.removeFromSuperview()
                 letter.textColor = LetterColor.originalLetterNormal.value
+                service.playSound(filename: "dropBack", repeat: true)
                 return
             }
         }
@@ -185,7 +236,6 @@ class ViewController: UIViewController {
         if let context = dragContext {
             let pointOnView = recorgnizer.location(in: recorgnizer.view)
             context.draggedView.center = pointOnView
-            
         }
     }
     
@@ -209,29 +259,24 @@ class ViewController: UIViewController {
         stackView.center = CGPoint.init(x: area.frame.width/2, y: area.frame.height/2)
         area.addSubview(stackView)
         return stackView
-        
     }
+    
     private func checkDraggableForOriginalLetters(forLetter letter: OriginalLetter, withRecognizer rec: UIPanGestureRecognizer) -> Bool{
         if letter.textColor == LetterColor.originalLetterDragged.value {
             return false
         }
         let pointInLettersView = rec.location(in: letter)
         return letter.point(inside: pointInLettersView, with: nil)
-        
     }
+    
     private func checkDraggableForDestinationalLetters(forLetter letter: DestinationalLetter, withRecognizer rec: UIPanGestureRecognizer) -> Bool{
         if letter.text == "" {
             return false
         }
         let pointInLettersView = rec.location(in: letter)
         return letter.point(inside: pointInLettersView, with: nil)
-        
     }
-    func getRandom(_ max: Int) -> Int{
-        return  Int(arc4random_uniform(UInt32(max)))
-        
-    }
-
+   
 }
 extension String{
     subscript (i: Int) -> Character {

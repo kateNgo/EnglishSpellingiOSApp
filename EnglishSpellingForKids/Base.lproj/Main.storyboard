@@ -48,7 +48,7 @@
                                                 <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
                                                 <state key="normal" title="Done"/>
                                                 <connections>
-                                                    <action selector="doneButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="d3W-dd-6R8"/>
+                                                    <segue destination="uC8-oe-39v" kind="show" id="WaI-C2-F9N"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -59,6 +59,63 @@
                                     </view>
                                 </subviews>
                             </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rl8-Pd-WPP">
+                                <rect key="frame" x="-140" y="52" width="140" height="684"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="hqP-fY-Lqi">
+                                        <rect key="frame" x="7" y="20" width="126" height="255"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LQz-Oo-SZV">
+                                                <rect key="frame" x="0.0" y="0.0" width="126" height="35"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                <state key="normal" title="Fruit"/>
+                                                <connections>
+                                                    <action selector="menuItemSelecting:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JGp-aY-VfF"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gZA-WW-uRq">
+                                                <rect key="frame" x="0.0" y="55" width="126" height="35"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                <state key="normal" title="Animal"/>
+                                                <connections>
+                                                    <action selector="menuItemSelecting:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pRF-pi-2ox"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ch6-uU-vWo">
+                                                <rect key="frame" x="0.0" y="110" width="126" height="35"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                <state key="normal" title="People"/>
+                                                <connections>
+                                                    <action selector="menuItemSelecting:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sbR-Rg-Tb8"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1d3-cZ-dqs">
+                                                <rect key="frame" x="0.0" y="165" width="126" height="35"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                <state key="normal" title="Furniture"/>
+                                                <connections>
+                                                    <action selector="menuItemSelecting:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hDg-3z-jjR"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FVi-vo-1kN">
+                                                <rect key="frame" x="0.0" y="220" width="126" height="35"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                <state key="normal" title="Homeware"/>
+                                                <connections>
+                                                    <action selector="menuItemSelecting:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7q1-GK-biO"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="hqP-fY-Lqi" firstAttribute="top" secondItem="Rl8-Pd-WPP" secondAttribute="top" constant="20" id="77I-GP-J2u"/>
+                                    <constraint firstItem="hqP-fY-Lqi" firstAttribute="width" secondItem="Rl8-Pd-WPP" secondAttribute="width" multiplier="0.9" id="QTx-Lx-80u"/>
+                                    <constraint firstAttribute="width" constant="140" id="R5U-aK-5zf"/>
+                                    <constraint firstItem="hqP-fY-Lqi" firstAttribute="centerX" secondItem="Rl8-Pd-WPP" secondAttribute="centerX" id="SxQ-47-xb4"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -66,18 +123,28 @@
                             <constraint firstItem="TUu-hm-CnQ" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.4" id="5NR-uo-f2B"/>
                             <constraint firstItem="TUu-hm-CnQ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="0.5" id="6fS-LJ-FZQ"/>
                             <constraint firstItem="5wW-5a-v4l" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="9Z6-ue-vm1"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Rl8-Pd-WPP" secondAttribute="bottom" id="KFh-HT-v0a"/>
+                            <constraint firstItem="Rl8-Pd-WPP" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="52" id="SxB-hS-r6a"/>
                             <constraint firstItem="TUu-hm-CnQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="VtK-1L-fMN"/>
                             <constraint firstItem="5wW-5a-v4l" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bPo-KH-cD4"/>
+                            <constraint firstItem="Rl8-Pd-WPP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="-140" id="nd1-ZC-KMj"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="5wW-5a-v4l" secondAttribute="bottom" constant="10" id="xBG-9J-IkO"/>
                             <constraint firstItem="5wW-5a-v4l" firstAttribute="top" secondItem="TUu-hm-CnQ" secondAttribute="bottom" constant="30" id="xhf-4l-zLe"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="uAL-kS-FlF"/>
+                    <navigationItem key="navigationItem" id="uAL-kS-FlF">
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="1WK-zw-sqk">
+                            <connections>
+                                <action selector="menuShowing:" destination="BYZ-38-t0r" id="Awc-Sz-U8y"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="destinationArea" destination="F5R-4g-eua" id="T79-P1-HWj"/>
                         <outlet property="imageView" destination="TUu-hm-CnQ" id="W0l-oI-V2O"/>
+                        <outlet property="leadingContraint" destination="nd1-ZC-KMj" id="ztH-9r-nBD"/>
+                        <outlet property="menuView" destination="Rl8-Pd-WPP" id="aQT-h4-UPr"/>
                         <outlet property="originArea" destination="kTG-Bs-hem" id="DB2-24-aAk"/>
-                        <segue destination="uC8-oe-39v" kind="presentation" identifier="showResultScreen" id="UFr-uo-8jF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -105,8 +172,11 @@
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                 <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
                                 <state key="normal" title="More"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="Uep-rG-daf"/>
+                                </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e4Q-cL-jKW">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e4Q-cL-jKW">
                                 <rect key="frame" x="21" y="164" width="372" height="74"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
@@ -157,5 +227,9 @@
     </scenes>
     <resources>
         <image name="apple.png" width="180" height="180"/>
+        <image name="menu" width="22" height="22"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Uep-rG-daf"/>
+    </inferredMetricsTieBreakers>
 </document>

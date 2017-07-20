@@ -7,46 +7,24 @@
 //
 
 import UIKit
-import AudioToolbox
+
 
 class ResultViewController: UIViewController {
 
     @IBOutlet var resultLabel: UILabel!
-    
-    
     @IBOutlet var resultImageView: UIImageView!
+    var result = ""
+    let numberOfFileResult = 5
+    let service = PPBWordService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-                let filename = "welldone"
-        let ext = "wav"
-        if let soundURL = Bundle.main.url(forResource: filename, withExtension: ext){
-            var soundId: SystemSoundID = 0
-            AudioServicesCreateSystemSoundID(soundURL as CFURL, &soundId)
-            
-            AudioServicesAddSystemSoundCompletion(soundId, nil, nil, { (soundId, clientData) -> Void in
-                AudioServicesDisposeSystemSoundID(soundId)
-            }, nil)
-            
-            AudioServicesPlaySystemSound(soundId)
-        }
-        let resultImage = UIImage.gifImageWithName("welldone1")
+        self.navigationItem.setHidesBackButton(true, animated:true);
+        let filename = result
+        let resultImage = UIImage.gifImageWithName(filename  + String( Int(arc4random_uniform(UInt32(numberOfFileResult)))))
         resultImageView.image = resultImage
-
     }
-
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func viewDidAppear(_ animated: Bool) {
+        self.service.playSound(filename: result, repeat: false)
     }
-    */
-
 }
