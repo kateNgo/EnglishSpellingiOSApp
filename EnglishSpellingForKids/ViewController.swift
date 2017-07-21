@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import CoreData
+
 
 class ViewController: UIViewController {
 
@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var originArea: UIView!
     @IBOutlet var destinationArea: UIView!
-    
+    var dragContext: DragContext?
     var menuShown = true
     let paddingLetter: Double = 3.0
     var currentWord: PPBWord = PPBWord()
@@ -25,18 +25,11 @@ class ViewController: UIViewController {
     var destinationalLetters : [DestinationalLetter] = []
     var originalStackView: UIStackView?
     var destinationalStackView : UIStackView?
-    var dragContext: DragContext?
-    var fruit: [PPBWord] = []
-    var animal: [PPBWord] = []
-    var words : [PPBWord] = []
     var result = ""
     let service = PPBWordService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fruit = service.initFruitData()
-        animal = service.initAnimalData()
-        words = animal
         menuView.layer.shadowOpacity = 1
         menuView.layer.shadowRadius = 6
     }
@@ -60,9 +53,9 @@ class ViewController: UIViewController {
     @IBAction func menuItemSelecting(_ sender: UIButton) {
         switch sender.currentTitle! {
         case "Fruit":
-            words = fruit
+            PPBWordService.words = PPBWordService.fruit
         default:
-            words = animal
+            PPBWordService.words = PPBWordService.animal
         }
         leadingContraint.constant = -140
         menuShown = true
@@ -94,7 +87,7 @@ class ViewController: UIViewController {
     }
     
     func chooseWord(){
-        currentWord = service.chooseRandomWord(words: words)
+        currentWord = service.chooseRandomWord()
         word = String (currentWord.word.characters.sorted())
         self.imageView.image = UIImage(named:currentWord.imageFile)!
         clearConstraint()

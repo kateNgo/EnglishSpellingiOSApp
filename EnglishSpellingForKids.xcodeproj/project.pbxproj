@@ -14,7 +14,6 @@
 		641AC2461EF1FFF600859BB4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 641AC2441EF1FFF600859BB4 /* LaunchScreen.storyboard */; };
 		641AC2641EF220A600859BB4 /* LetterLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641AC2631EF220A600859BB4 /* LetterLabel.swift */; };
 		641AC2661EF2221F00859BB4 /* LetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641AC2651EF2221F00859BB4 /* LetterView.swift */; };
-		648C54B91F0231310043EE6C /* welldone.wav in Resources */ = {isa = PBXBuildFile; fileRef = 648C54B81F0231310043EE6C /* welldone.wav */; };
 		648C54BB1F05C6910043EE6C /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648C54BA1F05C6910043EE6C /* DataController.swift */; };
 		648C54BF1F0DD5970043EE6C /* PPBWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648C54BE1F0DD5970043EE6C /* PPBWord.swift */; };
 		648C54C11F0DD72C0043EE6C /* PPBWordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648C54C01F0DD72C0043EE6C /* PPBWordService.swift */; };
@@ -88,7 +87,6 @@
 		641AC2471EF1FFF600859BB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		641AC2631EF220A600859BB4 /* LetterLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LetterLabel.swift; path = view/LetterLabel.swift; sourceTree = "<group>"; };
 		641AC2651EF2221F00859BB4 /* LetterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LetterView.swift; path = view/LetterView.swift; sourceTree = "<group>"; };
-		648C54B81F0231310043EE6C /* welldone.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = welldone.wav; path = sounds/welldone.wav; sourceTree = "<group>"; };
 		648C54BA1F05C6910043EE6C /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataController.swift; path = model/DataController.swift; sourceTree = "<group>"; };
 		648C54BE1F0DD5970043EE6C /* PPBWord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PPBWord.swift; path = model/PPBWord.swift; sourceTree = "<group>"; };
 		648C54C01F0DD72C0043EE6C /* PPBWordService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PPBWordService.swift; path = model/PPBWordService.swift; sourceTree = "<group>"; };
@@ -182,7 +180,6 @@
 		641AC2371EF1FFF600859BB4 /* EnglishSpellingForKids */ = {
 			isa = PBXGroup;
 			children = (
-				648C54B71F02311A0043EE6C /* sounds */,
 				641AC2601EF2201900859BB4 /* model */,
 				641AC25F1EF2200D00859BB4 /* controller */,
 				641AC25E1EF2200400859BB4 /* view */,
@@ -235,14 +232,6 @@
 				648C54BA1F05C6910043EE6C /* DataController.swift */,
 			);
 			name = model;
-			sourceTree = "<group>";
-		};
-		648C54B71F02311A0043EE6C /* sounds */ = {
-			isa = PBXGroup;
-			children = (
-				648C54B81F0231310043EE6C /* welldone.wav */,
-			);
-			name = sounds;
 			sourceTree = "<group>";
 		};
 		648C54DA1F1DD8890043EE6C /* fruit */ = {
@@ -431,7 +420,6 @@
 				641AC23E1EF1FFF600859BB4 /* Main.storyboard in Resources */,
 				648C55A01F204CAD0043EE6C /* drop.wav in Resources */,
 				648C557F1F203BF60043EE6C /* fish.png in Resources */,
-				648C54B91F0231310043EE6C /* welldone.wav in Resources */,
 				648C55231F2019510043EE6C /* apple.png in Resources */,
 				648C55241F2019510043EE6C /* avocado.png in Resources */,
 				648C552D1F2019510043EE6C /* pear.png in Resources */,
