@@ -27,15 +27,19 @@ class ViewController: UIViewController {
     var destinationalStackView : UIStackView?
     var result = ""
     let service = PPBWordService()
-    
+    static var nextWord: Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
         menuView.layer.shadowOpacity = 1
         menuView.layer.shadowRadius = 6
+        chooseWord()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        chooseWord()
+        if ViewController.nextWord {
+            chooseWord()
+            ViewController.nextWord = false
+        }
     }
     
     @IBAction func menuShowing(_ sender: UIBarButtonItem) {
@@ -54,6 +58,12 @@ class ViewController: UIViewController {
         switch sender.currentTitle! {
         case "Fruit":
             PPBWordService.words = PPBWordService.fruit
+        case "People":
+            PPBWordService.words = PPBWordService.people
+        case "Kitchenware":
+            PPBWordService.words = PPBWordService.kitchenware
+        case "Furniture":
+            PPBWordService.words = PPBWordService.furniture
         default:
             PPBWordService.words = PPBWordService.animal
         }
@@ -134,7 +144,8 @@ class ViewController: UIViewController {
             let numberOfLetter = word.characters.count
             for _ in 0..<numberOfLetter{
                 let label = DestinationalLetter.init(withText: "")
-                label.backgroundColor = UIColor.brown
+                label.backgroundColor = UIColor.init(red: 30, green: 47, blue: 92, alpha: 1.0)
+                
                 destinationalLetters.append(label)
             }
         destinationalStackView = makeStackView(listOfLabel: destinationalLetters, in: destinationArea)
