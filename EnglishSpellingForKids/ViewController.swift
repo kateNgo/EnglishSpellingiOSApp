@@ -9,7 +9,7 @@
 import UIKit
 
 
-class ViewController: UIViewController {
+class ViewController: BaseViewController {
 
     @IBOutlet var leadingContraint: NSLayoutConstraint!
     @IBOutlet var menuView: UIView!
@@ -27,21 +27,57 @@ class ViewController: UIViewController {
     var destinationalStackView : UIStackView?
     var result = ""
     let service = PPBWordService()
-    static var nextWord: Bool = false
+    var answerMode = false
+    var answerButton: UIBarButtonItem = UIBarButtonItem.init()
+    var pan = UIPanGestureRecognizer()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         menuView.layer.shadowOpacity = 1
         menuView.layer.shadowRadius = 6
         chooseWord()
+        self.addAnswerButton(name: "question")
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if ViewController.nextWord {
+        if BaseViewController.nextWord {
             chooseWord()
             ViewController.nextWord = false
         }
     }
-    
+    private func addAnswerButton(name: String) {
+        if let items = self.navigationItem.rightBarButtonItems, items.count == 2{
+            self.navigationItem.rightBarButtonItems?.remove(at: 1)
+        }
+        answerButton = UIBarButtonItem.init(image: UIImage.init(named: name), style: .done, target: self, action: #selector(ViewController.answerBarItemClick))
+        self.navigationItem.rightBarButtonItems?.append(answerButton)
+        
+    }
+    func answerBarItemClick(){
+        
+        if answerMode {
+            clearConstraint()
+            createOriginViews()
+            createDestinationViews()
+            setupGestures()
+            answerMode = false
+            self.addAnswerButton(name: "question")
+            self.view.removeGestureRecognizer(pan)// .addGestureRecognizer(pan)
+            
+        }else{
+            answerPPBWord()
+            answerMode = true
+            self.addAnswerButton(name: "answer")
+            self.view.addGestureRecognizer(pan)
+        }
+    }
+    func answerPPBWord(){
+        let numberOfLetter = currentWord.word.characters.count
+        for i in 0..<numberOfLetter{
+            destinationalLetters[i].text = currentWord.word[i]
+            originalletters[i].textColor = LetterColor.originalLetterDragged.value
+        }
+    }
     @IBAction func menuShowing(_ sender: UIBarButtonItem) {
         if menuShown {
             leadingContraint.constant = 0
@@ -158,7 +194,7 @@ class ViewController: UIViewController {
    
     
     func setupGestures() {
-        let pan = UIPanGestureRecognizer(target:self, action:#selector(ViewController.pan(_:)))
+        pan = UIPanGestureRecognizer(target:self, action:#selector(ViewController.pan(_:)))
         pan.maximumNumberOfTouches = 1
         pan.minimumNumberOfTouches = 1
         self.view.addGestureRecognizer(pan)
@@ -281,6 +317,10 @@ class ViewController: UIViewController {
         let pointInLettersView = rec.location(in: letter)
         return letter.point(inside: pointInLettersView, with: nil)
     }
+    override func nextPPBWord() {
+        chooseWord()
+    }
+   
    
 }
 extension String{

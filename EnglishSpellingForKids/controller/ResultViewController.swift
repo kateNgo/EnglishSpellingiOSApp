@@ -9,7 +9,7 @@
 import UIKit
 
 
-class ResultViewController: UIViewController {
+class ResultViewController: BaseViewController {
 
     @IBOutlet var resultLabel: UILabel!
     @IBOutlet var resultImageView: UIImageView!
@@ -24,17 +24,15 @@ class ResultViewController: UIViewController {
         let random = "0"// String( Int(arc4random_uniform(UInt32(numberOfFileResult))))
         let resultImage = UIImage.gifImageWithName(filename  + random)
         resultImageView.image = resultImage
-        let rightButton = UIBarButtonItem.init(title: "Next", style: .done, target: self, action: #selector(ResultViewController.nextWord))
-        self.navigationItem.rightBarButtonItem = rightButton;
+        
         
     }
     override func viewDidAppear(_ animated: Bool) {
         self.service.playSound(filename: result, repeat: false)
     }
-    func nextWord(){
-        ViewController.nextWord = true
+    override func nextPPBWord(){
+        super.nextPPBWord()
         self.navigationController?.popViewController(animated:true)
-        
-        
     }
+    
 }

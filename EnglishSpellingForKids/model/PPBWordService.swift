@@ -41,6 +41,7 @@ enum PPBCategory: String {
 class PPBWordService {
     
     static var doneItems: [PPBWord] = []
+    
     static var fruit: [PPBWord] {
         var data : [PPBWord] = []
         let apple = PPBWord.init(word: "apple", imageFile: "apple.png", category: PPBCategory.fruit, note: "")
@@ -107,6 +108,18 @@ class PPBWordService {
         data.append(PPBWord.init(word: "table", imageFile: "table.png", category: PPBCategory.furniture, note: ""))
         data.append(PPBWord.init(word: "toilet", imageFile: "toilet.png", category: PPBCategory.furniture, note: ""))
         data.append(PPBWord.init(word: "window", imageFile: "window.png", category: PPBCategory.furniture, note: ""))
+        data.append(PPBWord.init(word: "bookshelf", imageFile: "bookshelf.png", category: PPBCategory.furniture, note: ""))
+        data.append(PPBWord.init(word: "computer", imageFile: "computer.png", category: PPBCategory.furniture, note: ""))
+        data.append(PPBWord.init(word: "dishwasher", imageFile: "dishwasher.png", category: PPBCategory.furniture, note: ""))
+        data.append(PPBWord.init(word: "laptop", imageFile: "laptop.png", category: PPBCategory.furniture, note: ""))
+        data.append(PPBWord.init(word: "phone", imageFile: "phone.png", category: PPBCategory.furniture, note: ""))
+        data.append(PPBWord.init(word: "printer", imageFile: "printer.png", category: PPBCategory.furniture, note: ""))
+        data.append(PPBWord.init(word: "refrigerator", imageFile: "refrigerator.png", category: PPBCategory.furniture, note: ""))
+        data.append(PPBWord.init(word: "vacuum", imageFile: "vacuum.png", category: PPBCategory.furniture, note: ""))
+        data.append(PPBWord.init(word: "television", imageFile: "television.png", category: PPBCategory.furniture, note: ""))
+        data.append(PPBWord.init(word: "vase", imageFile: "vase.png", category: PPBCategory.furniture, note: ""))
+        
+        
         return data
     }
     static var kitchenware: [PPBWord]{
@@ -172,6 +185,32 @@ class PPBWordService {
     }
     static var animal: [PPBWord] {
         var data : [PPBWord] = []
+        data.append(PPBWord.init(word: "camel", imageFile: "camel.png", category: PPBCategory.animal, note: ""))
+        data.append(PPBWord.init(word: "falcon", imageFile: "falcon.png", category: PPBCategory.animal, note: ""))
+        data.append(PPBWord.init(word: "flamingo", imageFile: "flamingo.png", category: PPBCategory.animal, note: ""))
+        data.append(PPBWord.init(word: "fly", imageFile: "fly.png", category: PPBCategory.animal, note: ""))
+        data.append(PPBWord.init(word: "frog", imageFile: "frog.png", category: PPBCategory.animal, note: ""))
+        data.append(PPBWord.init(word: "goat", imageFile: "goat.png", category: PPBCategory.animal, note: ""))
+        data.append(PPBWord.init(word: "gorilla", imageFile: "gorilla.png", category: PPBCategory.animal, note: ""))
+        data.append(PPBWord.init(word: "hippopotamus", imageFile: "hippopotamus.png", category: PPBCategory.animal, note: ""))
+        data.append(PPBWord.init(word: "jaguar", imageFile: "jaguar.png", category: PPBCategory.animal, note: ""))
+        data.append(PPBWord.init(word: "kitten", imageFile: "kitten.png", category: PPBCategory.animal, note: ""))
+        data.append(PPBWord.init(word: "leopard", imageFile: "leopard.png", category: PPBCategory.animal, note: ""))
+        data.append(PPBWord.init(word: "lynx", imageFile: "lynx.png", category: PPBCategory.animal, note: ""))
+        data.append(PPBWord.init(word: "macaw", imageFile: "macaw.png", category: PPBCategory.animal, note: ""))
+        data.append(PPBWord.init(word: "octopus", imageFile: "octopus.png", category: PPBCategory.animal, note: ""))
+        data.append(PPBWord.init(word: "owl", imageFile: "owl.png", category: PPBCategory.animal, note: ""))
+        data.append(PPBWord.init(word: "panther", imageFile: "panther.png", category: PPBCategory.animal, note: ""))
+        data.append(PPBWord.init(word: "parrot", imageFile: "parrot.png", category: PPBCategory.animal, note: ""))
+        data.append(PPBWord.init(word: "pig", imageFile: "pig.png", category: PPBCategory.animal, note: ""))
+        data.append(PPBWord.init(word: "pigeon", imageFile: "pigeon.png", category: PPBCategory.animal, note: ""))
+        data.append(PPBWord.init(word: "rabbit", imageFile: "rabbit.png", category: PPBCategory.animal, note: ""))
+        data.append(PPBWord.init(word: "rat", imageFile: "rat.png", category: PPBCategory.animal, note: ""))
+        
+        data.append(PPBWord.init(word: "spider", imageFile: "spider.png", category: PPBCategory.animal, note: ""))
+        
+        data.append(PPBWord.init(word: "wolf", imageFile: "wolf.png", category: PPBCategory.animal, note: ""))
+        
         let bat = PPBWord.init(word: "bat", imageFile: "bat.png", category: PPBCategory.animal, note: "")
         data.append(bat)
         
