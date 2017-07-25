@@ -11,6 +11,7 @@ import UIKit
 
 class ViewController: BaseViewController {
 
+    @IBOutlet var doneButton: UIButton!
     @IBOutlet var leadingContraint: NSLayoutConstraint!
     @IBOutlet var menuView: UIView!
     @IBOutlet var imageView: UIImageView!
@@ -66,6 +67,7 @@ class ViewController: BaseViewController {
             if let gess = self.view.gestureRecognizers, gess.count == 0 {
                 self.view.addGestureRecognizer(pan)
             }
+            self.doneButton.isEnabled = true
             
         }else{
             answerPPBWord()
@@ -74,6 +76,7 @@ class ViewController: BaseViewController {
             if let gess = self.view.gestureRecognizers, gess.count > 0 {
                 self.view.removeGestureRecognizer(gess[0])
             }
+            self.doneButton.isEnabled = false
         }
     }
     func answerPPBWord(){
@@ -324,6 +327,10 @@ class ViewController: BaseViewController {
     }
     override func nextPPBWord() {
         chooseWord()
+        if let gess = self.view.gestureRecognizers, gess.count == 0 {
+            self.view.addGestureRecognizer(pan)
+        }
+        self.doneButton.isEnabled = true
     }
    
    
