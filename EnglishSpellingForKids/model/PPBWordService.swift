@@ -44,6 +44,14 @@ class PPBWordService {
     
     static var fruit: [PPBWord] {
         var data : [PPBWord] = []
+        data.append(PPBWord.init(word: "apricot", imageFile: "apricot.png", category: PPBCategory.fruit, note: ""))
+        data.append(PPBWord.init(word: "grapefruit", imageFile: "grapefruit.png", category: PPBCategory.fruit, note: ""))
+        data.append(PPBWord.init(word: "mango", imageFile: "mango.png", category: PPBCategory.fruit, note: ""))
+        data.append(PPBWord.init(word: "peach", imageFile: "peach.png", category: PPBCategory.fruit, note: ""))
+        data.append(PPBWord.init(word: "persimmon", imageFile: "persimmon.png", category: PPBCategory.fruit, note: ""))
+        data.append(PPBWord.init(word: "pineapple", imageFile: "pineapple.png", category: PPBCategory.fruit, note: ""))
+        data.append(PPBWord.init(word: "raspberry", imageFile: "raspberry.png", category: PPBCategory.fruit, note: ""))
+        data.append(PPBWord.init(word: "papaya", imageFile: "papaya.png", category: PPBCategory.fruit, note: ""))
         let apple = PPBWord.init(word: "apple", imageFile: "apple.png", category: PPBCategory.fruit, note: "")
         data.append(apple)
         

@@ -35,6 +35,8 @@ class ViewController: BaseViewController {
         super.viewDidLoad()
         menuView.layer.shadowOpacity = 1
         menuView.layer.shadowRadius = 6
+        setupGestures()
+        self.view.addGestureRecognizer(pan)
         chooseWord()
         self.addAnswerButton(name: "question")
     }
@@ -59,16 +61,19 @@ class ViewController: BaseViewController {
             clearConstraint()
             createOriginViews()
             createDestinationViews()
-            setupGestures()
             answerMode = false
             self.addAnswerButton(name: "question")
-            self.view.removeGestureRecognizer(pan)// .addGestureRecognizer(pan)
+            if let gess = self.view.gestureRecognizers, gess.count == 0 {
+                self.view.addGestureRecognizer(pan)
+            }
             
         }else{
             answerPPBWord()
             answerMode = true
             self.addAnswerButton(name: "answer")
-            self.view.addGestureRecognizer(pan)
+            if let gess = self.view.gestureRecognizers, gess.count > 0 {
+                self.view.removeGestureRecognizer(gess[0])
+            }
         }
     }
     func answerPPBWord(){
@@ -139,7 +144,7 @@ class ViewController: BaseViewController {
         clearConstraint()
         createOriginViews()
         createDestinationViews()
-        setupGestures()
+        
     }
     
     func clearConstraint(){
@@ -197,7 +202,7 @@ class ViewController: BaseViewController {
         pan = UIPanGestureRecognizer(target:self, action:#selector(ViewController.pan(_:)))
         pan.maximumNumberOfTouches = 1
         pan.minimumNumberOfTouches = 1
-        self.view.addGestureRecognizer(pan)
+        
     }
     
     func pan(_ rec:UIPanGestureRecognizer) {
