@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  EnglishSpellingForKids
+//  EnglishSpelling
 //
 //  Created by phuong on 15/6/17.
 //  Copyright © 2017 ppben. All rights reserved.

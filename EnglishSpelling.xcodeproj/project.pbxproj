@@ -11,7 +11,6 @@
 		641AC23B1EF1FFF600859BB4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641AC23A1EF1FFF600859BB4 /* ViewController.swift */; };
 		641AC23E1EF1FFF600859BB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 641AC23C1EF1FFF600859BB4 /* Main.storyboard */; };
 		641AC2431EF1FFF600859BB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 641AC2421EF1FFF600859BB4 /* Assets.xcassets */; };
-		641AC2461EF1FFF600859BB4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 641AC2441EF1FFF600859BB4 /* LaunchScreen.storyboard */; };
 		641AC2641EF220A600859BB4 /* LetterLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641AC2631EF220A600859BB4 /* LetterLabel.swift */; };
 		641AC2661EF2221F00859BB4 /* LetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641AC2651EF2221F00859BB4 /* LetterView.swift */; };
 		643333AA1F21BB2D0002B433 /* welldone2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 643333A91F21BB2D0002B433 /* welldone2.gif */; };
@@ -101,6 +100,7 @@
 		645A23831F26B73B004F040C /* pineapple.png in Resources */ = {isa = PBXBuildFile; fileRef = 645A237C1F26B73B004F040C /* pineapple.png */; };
 		645A23841F26B73B004F040C /* raspberry.png in Resources */ = {isa = PBXBuildFile; fileRef = 645A237D1F26B73B004F040C /* raspberry.png */; };
 		645A23861F26B8B5004F040C /* papaya.png in Resources */ = {isa = PBXBuildFile; fileRef = 645A23851F26B8B5004F040C /* papaya.png */; };
+		645A23881F26F3CB004F040C /* EnglishSpellingLaunch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 645A23871F26F3CB004F040C /* EnglishSpellingLaunch Screen.storyboard */; };
 		648C54BF1F0DD5970043EE6C /* PPBWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648C54BE1F0DD5970043EE6C /* PPBWord.swift */; };
 		648C54C11F0DD72C0043EE6C /* PPBWordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648C54C01F0DD72C0043EE6C /* PPBWordService.swift */; };
 		648C54F41F1DE89C0043EE6C /* bat.png in Resources */ = {isa = PBXBuildFile; fileRef = 648C54DC1F1DE89C0043EE6C /* bat.png */; };
@@ -166,7 +166,6 @@
 		641AC23A1EF1FFF600859BB4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		641AC23D1EF1FFF600859BB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		641AC2421EF1FFF600859BB4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		641AC2451EF1FFF600859BB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		641AC2471EF1FFF600859BB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		641AC2631EF220A600859BB4 /* LetterLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LetterLabel.swift; path = view/LetterLabel.swift; sourceTree = "<group>"; };
 		641AC2651EF2221F00859BB4 /* LetterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LetterView.swift; path = view/LetterView.swift; sourceTree = "<group>"; };
@@ -257,6 +256,7 @@
 		645A237C1F26B73B004F040C /* pineapple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pineapple.png; path = images/fruit/pineapple.png; sourceTree = "<group>"; };
 		645A237D1F26B73B004F040C /* raspberry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = raspberry.png; path = images/fruit/raspberry.png; sourceTree = "<group>"; };
 		645A23851F26B8B5004F040C /* papaya.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = papaya.png; path = images/fruit/papaya.png; sourceTree = "<group>"; };
+		645A23871F26F3CB004F040C /* EnglishSpellingLaunch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "EnglishSpellingLaunch Screen.storyboard"; sourceTree = "<group>"; };
 		648C54BE1F0DD5970043EE6C /* PPBWord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PPBWord.swift; path = model/PPBWord.swift; sourceTree = "<group>"; };
 		648C54C01F0DD72C0043EE6C /* PPBWordService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PPBWordService.swift; path = model/PPBWordService.swift; sourceTree = "<group>"; };
 		648C54DC1F1DE89C0043EE6C /* bat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bat.png; path = images/animal/bat.png; sourceTree = "<group>"; };
@@ -346,6 +346,7 @@
 		641AC2371EF1FFF600859BB4 /* EnglishSpellingForKids */ = {
 			isa = PBXGroup;
 			children = (
+				645A23871F26F3CB004F040C /* EnglishSpellingLaunch Screen.storyboard */,
 				641AC2601EF2201900859BB4 /* model */,
 				641AC25F1EF2200D00859BB4 /* controller */,
 				641AC25E1EF2200400859BB4 /* view */,
@@ -353,7 +354,6 @@
 				641AC2381EF1FFF600859BB4 /* AppDelegate.swift */,
 				641AC23C1EF1FFF600859BB4 /* Main.storyboard */,
 				641AC2421EF1FFF600859BB4 /* Assets.xcassets */,
-				641AC2441EF1FFF600859BB4 /* LaunchScreen.storyboard */,
 				641AC2471EF1FFF600859BB4 /* Info.plist */,
 			);
 			path = EnglishSpellingForKids;
@@ -657,6 +657,7 @@
 				648C552E1F2019510043EE6C /* plum.png in Resources */,
 				643333C31F21CF930002B433 /* lady.png in Resources */,
 				645A23841F26B73B004F040C /* raspberry.png in Resources */,
+				645A23881F26F3CB004F040C /* EnglishSpellingLaunch Screen.storyboard in Resources */,
 				645A23801F26B73B004F040C /* mango.png in Resources */,
 				643334051F21E34F0002B433 /* stool.png in Resources */,
 				645A23731F25FA7C004F040C /* rabbit.png in Resources */,
@@ -689,7 +690,6 @@
 				643333F81F21DFAC0002B433 /* carpet.png in Resources */,
 				643333C01F21CF930002B433 /* doctor.png in Resources */,
 				643333F91F21DFAC0002B433 /* chair.png in Resources */,
-				641AC2461EF1FFF600859BB4 /* LaunchScreen.storyboard in Resources */,
 				645A236A1F25FA7C004F040C /* leopard.png in Resources */,
 				645A236C1F25FA7C004F040C /* macaw.png in Resources */,
 				645A23471F25D38C004F040C /* vacuum.png in Resources */,
@@ -817,14 +817,6 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		641AC2441EF1FFF600859BB4 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				641AC2451EF1FFF600859BB4 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -899,6 +891,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -942,6 +935,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 4JKMHZJJZP;
 				INFOPLIST_FILE = EnglishSpellingForKids/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
