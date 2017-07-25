@@ -161,7 +161,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		641AC2351EF1FFF600859BB4 /* EnglishSpellingForKids.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EnglishSpellingForKids.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		641AC2351EF1FFF600859BB4 /* EnglishSpelling.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EnglishSpelling.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		641AC2381EF1FFF600859BB4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		641AC23A1EF1FFF600859BB4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		641AC23D1EF1FFF600859BB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -338,7 +338,7 @@
 		641AC2361EF1FFF600859BB4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				641AC2351EF1FFF600859BB4 /* EnglishSpellingForKids.app */,
+				641AC2351EF1FFF600859BB4 /* EnglishSpelling.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -585,9 +585,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		641AC2341EF1FFF600859BB4 /* EnglishSpellingForKids */ = {
+		641AC2341EF1FFF600859BB4 /* EnglishSpelling */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 641AC24A1EF1FFF600859BB4 /* Build configuration list for PBXNativeTarget "EnglishSpellingForKids" */;
+			buildConfigurationList = 641AC24A1EF1FFF600859BB4 /* Build configuration list for PBXNativeTarget "EnglishSpelling" */;
 			buildPhases = (
 				641AC2311EF1FFF600859BB4 /* Sources */,
 				641AC2321EF1FFF600859BB4 /* Frameworks */,
@@ -597,9 +597,9 @@
 			);
 			dependencies = (
 			);
-			name = EnglishSpellingForKids;
+			name = EnglishSpelling;
 			productName = EnglishSpellingForKids;
-			productReference = 641AC2351EF1FFF600859BB4 /* EnglishSpellingForKids.app */;
+			productReference = 641AC2351EF1FFF600859BB4 /* EnglishSpelling.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -619,7 +619,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 641AC2301EF1FFF600859BB4 /* Build configuration list for PBXProject "EnglishSpellingForKids" */;
+			buildConfigurationList = 641AC2301EF1FFF600859BB4 /* Build configuration list for PBXProject "EnglishSpelling" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -632,7 +632,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				641AC2341EF1FFF600859BB4 /* EnglishSpellingForKids */,
+				641AC2341EF1FFF600859BB4 /* EnglishSpelling */,
 			);
 		};
 /* End PBXProject section */
@@ -930,7 +930,7 @@
 				INFOPLIST_FILE = EnglishSpellingForKids/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ppben.EnglishSpellingForKids;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ppben.EnglishSpelling;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -946,7 +946,7 @@
 				INFOPLIST_FILE = EnglishSpellingForKids/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ppben.EnglishSpellingForKids;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ppben.EnglishSpelling;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -956,7 +956,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		641AC2301EF1FFF600859BB4 /* Build configuration list for PBXProject "EnglishSpellingForKids" */ = {
+		641AC2301EF1FFF600859BB4 /* Build configuration list for PBXProject "EnglishSpelling" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				641AC2481EF1FFF600859BB4 /* Debug */,
@@ -965,7 +965,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		641AC24A1EF1FFF600859BB4 /* Build configuration list for PBXNativeTarget "EnglishSpellingForKids" */ = {
+		641AC24A1EF1FFF600859BB4 /* Build configuration list for PBXNativeTarget "EnglishSpelling" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				641AC24B1EF1FFF600859BB4 /* Debug */,
