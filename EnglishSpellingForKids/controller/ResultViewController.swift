@@ -19,13 +19,10 @@ class ResultViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.navigationItem.setHidesBackButton(true, animated:true);
         let filename = result
-        let random = "0"// String( Int(arc4random_uniform(UInt32(numberOfFileResult))))
+        let random =  String( Int(arc4random_uniform(UInt32(numberOfFileResult))))
         let resultImage = UIImage.gifImageWithName(filename  + random)
         resultImageView.image = resultImage
-        
-        
     }
     override func viewDidAppear(_ animated: Bool) {
         self.service.playSound(filename: result, repeat: false)

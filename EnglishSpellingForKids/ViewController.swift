@@ -38,8 +38,8 @@ class ViewController: BaseViewController {
         menuView.layer.shadowRadius = 6
         setupGestures()
         self.view.addGestureRecognizer(pan)
-        chooseWord()
         self.addAnswerButton(name: "question")
+        chooseWord()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -48,6 +48,24 @@ class ViewController: BaseViewController {
             ViewController.nextWord = false
         }
     }
+    func addGesture(){
+        if let gess = self.view.gestureRecognizers, gess.count == 0 {
+            self.view.addGestureRecognizer(pan)
+        }
+        self.doneButton.isEnabled = true
+    }
+    func removeGesture(){
+        if let gess = self.view.gestureRecognizers, gess.count > 0 {
+            self.view.removeGestureRecognizer(gess[0])
+        }
+        self.doneButton.isEnabled = false
+    }
+    func setupGestures() {
+        pan = UIPanGestureRecognizer(target:self, action:#selector(ViewController.pan(_:)))
+        pan.maximumNumberOfTouches = 1
+        pan.minimumNumberOfTouches = 1
+    }
+    
     private func addAnswerButton(name: String) {
         if let items = self.navigationItem.rightBarButtonItems, items.count == 2{
             self.navigationItem.rightBarButtonItems?.remove(at: 1)
@@ -58,25 +76,19 @@ class ViewController: BaseViewController {
     }
     func answerBarItemClick(){
         
-        if answerMode {
+        if !answerMode {
             clearConstraint()
             createOriginViews()
             createDestinationViews()
-            answerMode = false
+            answerMode = true
             self.addAnswerButton(name: "question")
-            if let gess = self.view.gestureRecognizers, gess.count == 0 {
-                self.view.addGestureRecognizer(pan)
-            }
-            self.doneButton.isEnabled = true
+            addGesture()
             
         }else{
             answerPPBWord()
-            answerMode = true
+            answerMode = false
             self.addAnswerButton(name: "answer")
-            if let gess = self.view.gestureRecognizers, gess.count > 0 {
-                self.view.removeGestureRecognizer(gess[0])
-            }
-            self.doneButton.isEnabled = false
+            removeGesture()
         }
     }
     func answerPPBWord(){
@@ -147,6 +159,8 @@ class ViewController: BaseViewController {
         clearConstraint()
         createOriginViews()
         createDestinationViews()
+        answerMode = false
+        answerBarItemClick()
         
     }
     
@@ -198,14 +212,6 @@ class ViewController: BaseViewController {
         }
         destinationArea.layoutIfNeeded()
         destinationArea.updateConstraints()
-    }
-   
-    
-    func setupGestures() {
-        pan = UIPanGestureRecognizer(target:self, action:#selector(ViewController.pan(_:)))
-        pan.maximumNumberOfTouches = 1
-        pan.minimumNumberOfTouches = 1
-        
     }
     
     func pan(_ rec:UIPanGestureRecognizer) {
@@ -327,12 +333,9 @@ class ViewController: BaseViewController {
     }
     override func nextPPBWord() {
         chooseWord()
-        if let gess = self.view.gestureRecognizers, gess.count == 0 {
-            self.view.addGestureRecognizer(pan)
-        }
-        self.doneButton.isEnabled = true
     }
    
+    
    
 }
 extension String{
