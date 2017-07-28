@@ -8,11 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		641AC2391EF1FFF600859BB4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641AC2381EF1FFF600859BB4 /* AppDelegate.swift */; };
-		641AC23B1EF1FFF600859BB4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641AC23A1EF1FFF600859BB4 /* ViewController.swift */; };
 		641AC23E1EF1FFF600859BB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 641AC23C1EF1FFF600859BB4 /* Main.storyboard */; };
 		641AC2431EF1FFF600859BB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 641AC2421EF1FFF600859BB4 /* Assets.xcassets */; };
 		641AC2641EF220A600859BB4 /* LetterLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641AC2631EF220A600859BB4 /* LetterLabel.swift */; };
 		641AC2661EF2221F00859BB4 /* LetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641AC2651EF2221F00859BB4 /* LetterView.swift */; };
+		6427AFF71F2B0E7B00AFD8C0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6427AFF61F2B0E7B00AFD8C0 /* ViewController.swift */; };
+		6427AFF91F2B0E9800AFD8C0 /* DragContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6427AFF81F2B0E9800AFD8C0 /* DragContext.swift */; };
 		643333AA1F21BB2D0002B433 /* welldone2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 643333A91F21BB2D0002B433 /* welldone2.gif */; };
 		643333BC1F21CF930002B433 /* baby.png in Resources */ = {isa = PBXBuildFile; fileRef = 643333AC1F21CF930002B433 /* baby.png */; };
 		643333BD1F21CF930002B433 /* builder.png in Resources */ = {isa = PBXBuildFile; fileRef = 643333AD1F21CF930002B433 /* builder.png */; };
@@ -156,19 +157,19 @@
 		648C55A01F204CAD0043EE6C /* drop.wav in Resources */ = {isa = PBXBuildFile; fileRef = 648C559F1F204CAD0043EE6C /* drop.wav */; };
 		648C55A21F206F4D0043EE6C /* dropBack.wav in Resources */ = {isa = PBXBuildFile; fileRef = 648C55A11F206F4D0043EE6C /* dropBack.wav */; };
 		64D38DB41EFC7B460092A552 /* SwiftGif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D38DB31EFC7B460092A552 /* SwiftGif.swift */; };
-		64E0968D1EFB84AF00DF38E3 /* DragContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E0968C1EFB84AE00DF38E3 /* DragContext.swift */; };
 		64E0968F1EFBF15200DF38E3 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E0968E1EFBF15200DF38E3 /* ResultViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		641AC2351EF1FFF600859BB4 /* EnglishSpelling.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EnglishSpelling.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		641AC2381EF1FFF600859BB4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		641AC23A1EF1FFF600859BB4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		641AC23D1EF1FFF600859BB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		641AC2421EF1FFF600859BB4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		641AC2471EF1FFF600859BB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		641AC2631EF220A600859BB4 /* LetterLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LetterLabel.swift; path = view/LetterLabel.swift; sourceTree = "<group>"; };
 		641AC2651EF2221F00859BB4 /* LetterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LetterView.swift; path = view/LetterView.swift; sourceTree = "<group>"; };
+		6427AFF61F2B0E7B00AFD8C0 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = controller/ViewController.swift; sourceTree = "<group>"; };
+		6427AFF81F2B0E9800AFD8C0 /* DragContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DragContext.swift; path = model/DragContext.swift; sourceTree = "<group>"; };
 		643333A91F21BB2D0002B433 /* welldone2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = welldone2.gif; path = images/result/welldone2.gif; sourceTree = "<group>"; };
 		643333AC1F21CF930002B433 /* baby.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = baby.png; path = images/people/baby.png; sourceTree = "<group>"; };
 		643333AD1F21CF930002B433 /* builder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = builder.png; path = images/people/builder.png; sourceTree = "<group>"; };
@@ -312,7 +313,6 @@
 		648C559F1F204CAD0043EE6C /* drop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = drop.wav; path = images/result/drop.wav; sourceTree = "<group>"; };
 		648C55A11F206F4D0043EE6C /* dropBack.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dropBack.wav; path = images/result/dropBack.wav; sourceTree = "<group>"; };
 		64D38DB31EFC7B460092A552 /* SwiftGif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftGif.swift; path = view/SwiftGif.swift; sourceTree = "<group>"; };
-		64E0968C1EFB84AE00DF38E3 /* DragContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DragContext.swift; sourceTree = "<group>"; };
 		64E0968E1EFBF15200DF38E3 /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResultViewController.swift; path = controller/ResultViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -385,7 +385,7 @@
 		641AC25F1EF2200D00859BB4 /* controller */ = {
 			isa = PBXGroup;
 			children = (
-				641AC23A1EF1FFF600859BB4 /* ViewController.swift */,
+				6427AFF61F2B0E7B00AFD8C0 /* ViewController.swift */,
 				64E0968E1EFBF15200DF38E3 /* ResultViewController.swift */,
 				645A23331F254E2D004F040C /* BaseViewController.swift */,
 			);
@@ -395,9 +395,9 @@
 		641AC2601EF2201900859BB4 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				6427AFF81F2B0E9800AFD8C0 /* DragContext.swift */,
 				648C54C01F0DD72C0043EE6C /* PPBWordService.swift */,
 				648C54BE1F0DD5970043EE6C /* PPBWord.swift */,
-				64E0968C1EFB84AE00DF38E3 /* DragContext.swift */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -793,13 +793,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6427AFF71F2B0E7B00AFD8C0 /* ViewController.swift in Sources */,
 				648C54BF1F0DD5970043EE6C /* PPBWord.swift in Sources */,
 				648C54C11F0DD72C0043EE6C /* PPBWordService.swift in Sources */,
 				641AC2641EF220A600859BB4 /* LetterLabel.swift in Sources */,
-				64E0968D1EFB84AF00DF38E3 /* DragContext.swift in Sources */,
 				64E0968F1EFBF15200DF38E3 /* ResultViewController.swift in Sources */,
+				6427AFF91F2B0E9800AFD8C0 /* DragContext.swift in Sources */,
 				645A23341F254E2D004F040C /* BaseViewController.swift in Sources */,
-				641AC23B1EF1FFF600859BB4 /* ViewController.swift in Sources */,
 				64D38DB41EFC7B460092A552 /* SwiftGif.swift in Sources */,
 				641AC2391EF1FFF600859BB4 /* AppDelegate.swift in Sources */,
 				641AC2661EF2221F00859BB4 /* LetterView.swift in Sources */,
