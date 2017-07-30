@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import AVFoundation
 
 class ViewController: BaseViewController {
 
@@ -31,7 +31,8 @@ class ViewController: BaseViewController {
     var answerMode = false
     var answerButton: UIBarButtonItem = UIBarButtonItem.init()
     var pan = UIPanGestureRecognizer()
-    
+    let speechSynthesizer = AVSpeechSynthesizer()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         menuView.layer.shadowOpacity = 1
@@ -40,6 +41,8 @@ class ViewController: BaseViewController {
         self.view.addGestureRecognizer(pan)
         self.addAnswerButton(name: "question")
         chooseWord()
+        addTapGesture()
+        print(AVSpeechSynthesisVoice.speechVoices())
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -47,6 +50,22 @@ class ViewController: BaseViewController {
             chooseWord()
             ViewController.nextWord = false
         }
+    }
+    func addTapGesture(){
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ViewController.speakWord))
+        tapGesture.numberOfTapsRequired = 1
+        imageView.addGestureRecognizer(tapGesture)
+    }
+    
+    @IBAction func speakButtonPressed(_ sender: UIButton) {
+        speakWord()
+    }
+    func speakWord(){
+        let utterance = AVSpeechUtterance(string: currentWord.word)
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        
+        utterance.rate = AVSpeechUtteranceDefaultSpeechRate - 0.1
+        speechSynthesizer.speak(utterance)
     }
     func addGesture(){
         if let gess = self.view.gestureRecognizers, gess.count == 0 {
@@ -120,6 +139,11 @@ class ViewController: BaseViewController {
             PPBWordService.words = PPBWordService.kitchenware
         case "Furniture":
             PPBWordService.words = PPBWordService.furniture
+        case "Objects":
+            PPBWordService.words = PPBWordService.objects
+        case "Clothing":
+            PPBWordService.words = PPBWordService.clothing
+            
         default:
             PPBWordService.words = PPBWordService.animal
         }
@@ -161,7 +185,7 @@ class ViewController: BaseViewController {
         createDestinationViews()
         answerMode = false
         answerBarItemClick()
-        
+        speakWord()
     }
     
     func clearConstraint(){
