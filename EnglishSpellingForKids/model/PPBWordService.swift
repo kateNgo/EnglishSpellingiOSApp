@@ -223,7 +223,7 @@ class PPBWordService {
         data.append(PPBWord.init(word: "card", imageFile: "card.png", category: PPBCategory.objects, note: ""))
         data.append(PPBWord.init(word: "clock", imageFile: "clock.png", category: PPBCategory.objects, note: ""))
         data.append(PPBWord.init(word: "coffee", imageFile: "coffee.png", category: PPBCategory.objects, note: ""))
-        data.append(PPBWord.init(word: "coins", imageFile: "coins.png", category: PPBCategory.objects, note: ""))
+        data.append(PPBWord.init(word: "coin", imageFile: "coin.png", category: PPBCategory.objects, note: ""))
         data.append(PPBWord.init(word: "cup", imageFile: "cup.png", category: PPBCategory.objects, note: ""))
         data.append(PPBWord.init(word: "fan", imageFile: "fan.png", category: PPBCategory.objects, note: ""))
         data.append(PPBWord.init(word: "flag", imageFile: "flag.png", category: PPBCategory.objects, note: ""))
@@ -295,7 +295,7 @@ class PPBWordService {
         data.append(PPBWord.init(word: "dress", imageFile: "dress.png", category: PPBCategory.clothing, note: ""))
         data.append(PPBWord.init(word: "handbag", imageFile: "handbag.png", category: PPBCategory.clothing, note: ""))
         data.append(PPBWord.init(word: "knitwear", imageFile: "knitwear.png", category: PPBCategory.clothing, note: ""))
-        data.append(PPBWord.init(word: "pyjamas", imageFile: "pyjamas.png", category: PPBCategory.clothing, note: ""))
+        data.append(PPBWord.init(word: "pajamas", imageFile: "pajamas.png", category: PPBCategory.clothing, note: ""))
         data.append(PPBWord.init(word: "pants", imageFile: "pants.png", category: PPBCategory.clothing, note: ""))
         data.append(PPBWord.init(word: "sandals", imageFile: "sandals.png", category: PPBCategory.clothing, note: ""))
         data.append(PPBWord.init(word: "scarf", imageFile: "scarf.png", category: PPBCategory.clothing, note: ""))
@@ -429,8 +429,8 @@ class PPBWordService {
     }
     static var words : [PPBWord] = []
     
-    /*
-     This is for test
+    
+    // This is for test
     static var index = -1
     func  chooseRandomWord() -> PPBWord{
         if PPBWordService.index >= PPBWordService.words.count - 1 {
@@ -442,7 +442,7 @@ class PPBWordService {
         
         
     }
-     */
+     /*
     func chooseRandomWord() -> PPBWord{
         if PPBWordService.doneItems.count == PPBWordService.words.count {
             PPBWordService.doneItems = []
@@ -454,6 +454,7 @@ class PPBWordService {
             }
         }
     }
+ */
     func playSound(filename: String, repeat: Bool){
         let ext = "wav"
         if let soundURL = Bundle.main.url(forResource: filename, withExtension: ext){
