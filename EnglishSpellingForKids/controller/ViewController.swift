@@ -30,6 +30,7 @@ class ViewController: BaseViewController {
     let service = PPBWordService()
     var answerMode = false
     var answerButton: UIBarButtonItem = UIBarButtonItem.init()
+    var  undoButton = UIBarButtonItem()
     var pan = UIPanGestureRecognizer()
     let speechSynthesizer = AVSpeechSynthesizer()
 
@@ -39,7 +40,9 @@ class ViewController: BaseViewController {
         menuView.layer.shadowRadius = 6
         setupGestures()
         self.view.addGestureRecognizer(pan)
+        self.addUndoButton()
         self.addAnswerButton(name: "question")
+        
         chooseWord()
         addTapGesture()
         print(AVSpeechSynthesisVoice.speechVoices())
@@ -86,26 +89,43 @@ class ViewController: BaseViewController {
     }
     
     private func addAnswerButton(name: String) {
-        if let items = self.navigationItem.rightBarButtonItems, items.count == 2{
-            self.navigationItem.rightBarButtonItems?.remove(at: 1)
+        if let items = self.navigationItem.rightBarButtonItems, items.count == 3{
+            self.navigationItem.rightBarButtonItems?.remove(at: 2)
         }
         answerButton = UIBarButtonItem.init(image: UIImage.init(named: name), style: .done, target: self, action: #selector(ViewController.answerBarItemClick))
         self.navigationItem.rightBarButtonItems?.append(answerButton)
         
     }
-    func answerBarItemClick(){
+    private func addUndoButton() {
+       
+         undoButton = UIBarButtonItem.init(image: UIImage.init(named: "undo"), style: .done, target: self, action: #selector(ViewController.undoBarItemClick))
+        self.navigationItem.rightBarButtonItems?.append(undoButton)
         
+    }
+    func undoBarItemClick(){
+        let numberOfLetter = word.characters.count
+        for i in 0..<numberOfLetter{
+            originalletters[i].text = word[i]
+            originalletters[i].textColor = LetterColor.originalLetterNormal.value
+            destinationalLetters[i].text = ""
+        
+        }
+        
+    }
+    func answerBarItemClick(){
         if !answerMode {
             clearConstraint()
             createOriginViews()
             createDestinationViews()
             answerMode = true
             self.addAnswerButton(name: "question")
+            undoButton.isEnabled = true
             addGesture()
             
         }else{
             answerPPBWord()
             answerMode = false
+            undoButton.isEnabled = false
             self.addAnswerButton(name: "answer")
             removeGesture()
         }

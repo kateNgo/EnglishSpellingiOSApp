@@ -15,8 +15,8 @@ class BaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let rightButton = UIBarButtonItem.init(image: UIImage.init(named: "next"), style: .done, target: self, action: #selector(BaseViewController.nextPPBWord))
-        self.navigationItem.rightBarButtonItem = rightButton;
+        let nextButton = UIBarButtonItem.init(image: UIImage.init(named: "next"), style: .done, target: self, action: #selector(BaseViewController.nextPPBWord))
+        self.navigationItem.rightBarButtonItem = nextButton;
     }
 
     override func didReceiveMemoryWarning() {
