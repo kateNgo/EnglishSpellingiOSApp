@@ -429,7 +429,7 @@ class PPBWordService {
     }
     static var words : [PPBWord] = []
     
-    
+    /*
     // This is for test
     static var index = -1
     func  chooseRandomWord() -> PPBWord{
@@ -442,7 +442,7 @@ class PPBWordService {
         
         
     }
-     /*
+     */
     func chooseRandomWord() -> PPBWord{
         if PPBWordService.doneItems.count == PPBWordService.words.count {
             PPBWordService.doneItems = []
@@ -454,7 +454,7 @@ class PPBWordService {
             }
         }
     }
- */
+ 
     func playSound(filename: String, repeat: Bool){
         let ext = "wav"
         if let soundURL = Bundle.main.url(forResource: filename, withExtension: ext){
