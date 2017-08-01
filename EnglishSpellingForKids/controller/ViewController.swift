@@ -33,7 +33,7 @@ class ViewController: BaseViewController {
     var  undoButton = UIBarButtonItem()
     var pan = UIPanGestureRecognizer()
     let speechSynthesizer = AVSpeechSynthesizer()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         menuView.layer.shadowOpacity = 1
@@ -42,10 +42,8 @@ class ViewController: BaseViewController {
         self.view.addGestureRecognizer(pan)
         self.addUndoButton()
         self.addAnswerButton(name: "question")
-        
         chooseWord()
         addTapGesture()
-        print(AVSpeechSynthesisVoice.speechVoices())
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -53,6 +51,22 @@ class ViewController: BaseViewController {
             chooseWord()
             ViewController.nextWord = false
         }
+    }
+    static var n: Int = 0
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        
+        changeColorOriginalLetters()
+       
+    }
+    private func changeColorOriginalLetters(){
+        for letter in originalletters{
+            letter.textColor = UIColor.yellow
+        }
+        print("n = \(ViewController.n)")
+        ViewController.n += 1
+        
     }
     func addTapGesture(){
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ViewController.speakWord))
@@ -64,11 +78,13 @@ class ViewController: BaseViewController {
         speakWord()
     }
     func speakWord(){
+        /*
         let utterance = AVSpeechUtterance(string: currentWord.word)
         utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
         
         utterance.rate = AVSpeechUtteranceDefaultSpeechRate - 0.1
         speechSynthesizer.speak(utterance)
+ */
     }
     func addGesture(){
         if let gess = self.view.gestureRecognizers, gess.count == 0 {
@@ -143,8 +159,10 @@ class ViewController: BaseViewController {
             UIView.animate(withDuration: 0.3, animations: {
                 self.view.layoutIfNeeded()
             })
+            imageView.isHidden = true
         }else {
             leadingContraint.constant = -145
+            imageView.isHidden = false
         }
         menuShown = !menuShown
     }
@@ -168,6 +186,7 @@ class ViewController: BaseViewController {
             PPBWordService.words = PPBWordService.animal
         }
         leadingContraint.constant = -140
+        imageView.isHidden = false
         menuShown = true
         PPBWordService.doneItems = []
         chooseWord()
@@ -388,5 +407,18 @@ extension String{
     }
     subscript (i: Int) -> String {
         return String(self[i] as Character)
+    }
+}
+extension UIUserInterfaceSizeClass: CustomStringConvertible{
+    public var description: String {
+        switch self {
+        case .compact:
+            return "Compact"
+        case .regular:
+            return "Regular"
+        default:
+            return "??"
+        }
+        
     }
 }

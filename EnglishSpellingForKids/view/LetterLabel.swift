@@ -13,6 +13,7 @@ enum LetterColor{
     case originalLetterDragged
     case detinationalLetterHaveNotDropped
     case detinationalLetterHaveDropped
+    case originalLetterNormalHeightCompact
     
     var value: UIColor {
         switch self {
@@ -24,6 +25,8 @@ enum LetterColor{
             return UIColor(red: 102, green: 0, blue: 51, alpha: 0.3)
         case .detinationalLetterHaveDropped:
             return UIColor(red: 102, green: 0, blue: 51, alpha: 1)
+        case .originalLetterNormalHeightCompact:
+            return UIColor.white
         }
     }
 }
