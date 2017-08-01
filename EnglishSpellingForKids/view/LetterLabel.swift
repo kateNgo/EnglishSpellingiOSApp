@@ -14,6 +14,7 @@ enum LetterColor{
     case detinationalLetterHaveNotDropped
     case detinationalLetterHaveDropped
     case originalLetterNormalHeightCompact
+    case originalLetterDraggedHeightCompact
     
     var value: UIColor {
         switch self {
@@ -26,7 +27,9 @@ enum LetterColor{
         case .detinationalLetterHaveDropped:
             return UIColor(red: 102, green: 0, blue: 51, alpha: 1)
         case .originalLetterNormalHeightCompact:
-            return UIColor.white
+            return UIColor(red: 249, green: 249, blue: 249, alpha: 1)
+        case .originalLetterDraggedHeightCompact:
+            return UIColor(red: 249, green: 249, blue: 249, alpha: 0.3)
         }
     }
 }
@@ -43,6 +46,7 @@ class LetterLabel: UILabel {
         self.numberOfLines = 0;
         self.adjustsFontSizeToFitWidth = true
         self.isUserInteractionEnabled = true
+        
     }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -51,6 +55,7 @@ class LetterLabel: UILabel {
 }
 class OriginalLetter: LetterLabel{
     var index: Int = 0
+    var dragged: Bool = false
     func copyLetter() -> OriginalLetter{
         if let str = self.text {
             let theCopy = OriginalLetter.init(withText: str)

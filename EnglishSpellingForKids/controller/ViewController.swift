@@ -33,7 +33,20 @@ class ViewController: BaseViewController {
     var  undoButton = UIBarButtonItem()
     var pan = UIPanGestureRecognizer()
     let speechSynthesizer = AVSpeechSynthesizer()
-    
+    var colorOriginalLetter: UIColor {
+        if traitCollection.verticalSizeClass == .regular{
+            return LetterColor.originalLetterNormal.value
+        }else{
+            return  LetterColor.originalLetterNormalHeightCompact.value
+        }
+    }
+    var colorOriginalLetterDragged: UIColor{
+        if traitCollection.verticalSizeClass == .regular{
+            return LetterColor.originalLetterDragged .value
+        }else{
+            return  LetterColor.originalLetterDraggedHeightCompact.value
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         menuView.layer.shadowOpacity = 1
@@ -56,16 +69,18 @@ class ViewController: BaseViewController {
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        
-        changeColorOriginalLetters()
-       
+        coordinator.animate(alongsideTransition: {  coordinator in
+            self.changeColorOriginalLetters()
+        }, completion: nil)
     }
     private func changeColorOriginalLetters(){
-        for letter in originalletters{
-            letter.textColor = UIColor.yellow
+        for letter in originalletters {
+            if letter.dragged {
+                letter.textColor = self.colorOriginalLetterDragged
+            }else {
+                letter.textColor = self.colorOriginalLetter
+            }
         }
-        print("n = \(ViewController.n)")
-        ViewController.n += 1
         
     }
     func addTapGesture(){
@@ -78,14 +93,11 @@ class ViewController: BaseViewController {
         speakWord()
     }
     func speakWord(){
-        /*
         let utterance = AVSpeechUtterance(string: currentWord.word)
         utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-        
         utterance.rate = AVSpeechUtteranceDefaultSpeechRate - 0.1
         speechSynthesizer.speak(utterance)
- */
-    }
+   }
     func addGesture(){
         if let gess = self.view.gestureRecognizers, gess.count == 0 {
             self.view.addGestureRecognizer(pan)
@@ -113,18 +125,16 @@ class ViewController: BaseViewController {
         
     }
     private func addUndoButton() {
-       
-         undoButton = UIBarButtonItem.init(image: UIImage.init(named: "undo"), style: .done, target: self, action: #selector(ViewController.undoBarItemClick))
+        undoButton = UIBarButtonItem.init(image: UIImage.init(named: "undo"), style: .done, target: self, action: #selector(ViewController.undoBarItemClick))
         self.navigationItem.rightBarButtonItems?.append(undoButton)
-        
     }
     func undoBarItemClick(){
         let numberOfLetter = word.characters.count
         for i in 0..<numberOfLetter{
             originalletters[i].text = word[i]
-            originalletters[i].textColor = LetterColor.originalLetterNormal.value
+            originalletters[i].dragged = false
+            originalletters[i].textColor = self.colorOriginalLetter
             destinationalLetters[i].text = ""
-        
         }
         
     }
@@ -137,12 +147,14 @@ class ViewController: BaseViewController {
             self.addAnswerButton(name: "question")
             undoButton.isEnabled = true
             addGesture()
-            
         }else{
             answerPPBWord()
             answerMode = false
             undoButton.isEnabled = false
             self.addAnswerButton(name: "answer")
+            for letter in originalletters {
+                letter.dragged = true
+            }
             removeGesture()
         }
     }
@@ -150,7 +162,7 @@ class ViewController: BaseViewController {
         let numberOfLetter = currentWord.word.characters.count
         for i in 0..<numberOfLetter{
             destinationalLetters[i].text = currentWord.word[i]
-            originalletters[i].textColor = LetterColor.originalLetterDragged.value
+            originalletters[i].textColor = self.colorOriginalLetterDragged
         }
     }
     @IBAction func menuShowing(_ sender: UIBarButtonItem) {
@@ -249,6 +261,15 @@ class ViewController: BaseViewController {
         for i in 0..<numberOfLetter{
             let label = OriginalLetter.init(withText: word[i])
             label.index = i
+            label.dragged = false
+            label.textColor = self.colorOriginalLetter
+            /*
+                if traitCollection.verticalSizeClass == .compact{
+                    label.textColor = LetterColor.originalLetterDraggedHeightCompact.value
+                }else{
+                    label.textColor =
+                }
+             */
             originalletters.append(label)
         }
         originalStackView = makeStackView(listOfLabel: originalletters, in: originArea)
@@ -262,13 +283,13 @@ class ViewController: BaseViewController {
     
     func createDestinationViews() {
         
-            let numberOfLetter = word.characters.count
-            for _ in 0..<numberOfLetter{
-                let label = DestinationalLetter.init(withText: "")
-                label.backgroundColor = UIColor.init(red: 30, green: 47, blue: 92, alpha: 1.0)
-                
-                destinationalLetters.append(label)
-            }
+        let numberOfLetter = word.characters.count
+        for _ in 0..<numberOfLetter{
+            let label = DestinationalLetter.init(withText: "")
+            label.backgroundColor = UIColor.init(red: 30, green: 47, blue: 92, alpha: 1.0)
+            label.textColor = LetterColor.originalLetterNormal.value
+            destinationalLetters.append(label)
+        }
         destinationalStackView = makeStackView(listOfLabel: destinationalLetters, in: destinationArea)
         if let stack = destinationalStackView {
             setupConstraints(stackView: stack, superView:destinationArea)
@@ -285,7 +306,8 @@ class ViewController: BaseViewController {
                     let draggingLetter = letter.copyLetter()
                     rec.view?.addSubview(draggingLetter)
                     dragContext = DragContext.init(withDraggedView: draggingLetter)
-                    letter.textColor = LetterColor.originalLetterDragged.value
+                    letter.textColor = self.colorOriginalLetterDragged
+                    letter.dragged = true
                     dragObjectAccordingToGesture(recorgnizer: rec)
                     break
                 }
@@ -341,9 +363,10 @@ class ViewController: BaseViewController {
     
     private func returnOriginalLetter(ForDraggedView viewBeingDraggedView: LetterLabel,withRecognizer  rec: UIPanGestureRecognizer){
         for letter in originalletters {
-            if letter.text == viewBeingDraggedView.text && letter.textColor == LetterColor.originalLetterDragged.value {
+            if letter.text == viewBeingDraggedView.text && letter.textColor == self.colorOriginalLetterDragged {
                 viewBeingDraggedView.removeFromSuperview()
-                letter.textColor = LetterColor.originalLetterNormal.value
+                letter.textColor = self.colorOriginalLetter
+                letter.dragged = false
                 service.playSound(filename: "dropBack", repeat: true)
                 return
             }
@@ -380,7 +403,7 @@ class ViewController: BaseViewController {
     }
     
     private func checkDraggableForOriginalLetters(forLetter letter: OriginalLetter, withRecognizer rec: UIPanGestureRecognizer) -> Bool{
-        if letter.textColor == LetterColor.originalLetterDragged.value {
+        if letter.textColor == self.colorOriginalLetterDragged {
             return false
         }
         let pointInLettersView = rec.location(in: letter)
