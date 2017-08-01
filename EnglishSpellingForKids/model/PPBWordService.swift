@@ -469,7 +469,26 @@ class PPBWordService {
             
         }
     }
-    
-    
+}
+extension String{
+    subscript (i: Int) -> Character {
+        return self[index(startIndex, offsetBy: i)]
+    }
+    subscript (i: Int) -> String {
+        return String(self[i] as Character)
+    }
+}
+extension UIUserInterfaceSizeClass: CustomStringConvertible{
+    public var description: String {
+        switch self {
+        case .compact:
+            return "Compact"
+        case .regular:
+            return "Regular"
+        default:
+            return "??"
+        }
+        
+    }
 }
 

@@ -32,7 +32,6 @@ class ViewController: BaseViewController {
     var answerButton: UIBarButtonItem = UIBarButtonItem.init()
     var  undoButton = UIBarButtonItem()
     var pan = UIPanGestureRecognizer()
-    let speechSynthesizer = AVSpeechSynthesizer()
     var colorOriginalLetter: UIColor {
         if traitCollection.verticalSizeClass == .regular{
             return LetterColor.originalLetterNormal.value
@@ -65,39 +64,65 @@ class ViewController: BaseViewController {
             ViewController.nextWord = false
         }
     }
-    static var n: Int = 0
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(alongsideTransition: {  coordinator in
-            self.changeColorOriginalLetters()
+            for letter in self.originalletters {
+                if letter.dragged {
+                    letter.textColor = self.colorOriginalLetterDragged
+                }else {
+                    letter.textColor = self.colorOriginalLetter
+                }
+            }
         }, completion: nil)
     }
-    private func changeColorOriginalLetters(){
-        for letter in originalletters {
-            if letter.dragged {
-                letter.textColor = self.colorOriginalLetterDragged
-            }else {
-                letter.textColor = self.colorOriginalLetter
-            }
-        }
-        
+    @IBAction func speakButtonPressed(_ sender: UIButton) {
+        currentWord.speak()
     }
+    
+    @IBAction func menuShowing(_ sender: UIBarButtonItem) {
+        if menuShown {
+            leadingContraint.constant = 0
+            UIView.animate(withDuration: 0.3, animations: {
+                self.view.layoutIfNeeded()
+            })
+        }else {
+            leadingContraint.constant = -145
+        }
+        menuShown = !menuShown
+    }
+    
+    @IBAction func menuItemSelecting(_ sender: UIButton) {
+        switch sender.currentTitle! {
+        case "Fruit":
+            PPBWordService.words = PPBWordService.fruit
+        case "People":
+            PPBWordService.words = PPBWordService.people
+        case "Kitchenware":
+            PPBWordService.words = PPBWordService.kitchenware
+        case "Furniture":
+            PPBWordService.words = PPBWordService.furniture
+        case "Objects":
+            PPBWordService.words = PPBWordService.objects
+        case "Clothing":
+            PPBWordService.words = PPBWordService.clothing
+            
+        default:
+            PPBWordService.words = PPBWordService.animal
+        }
+        leadingContraint.constant = -140
+        menuShown = true
+        PPBWordService.doneItems = []
+        chooseWord()
+    }
+    
     func addTapGesture(){
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ViewController.speakWord))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ViewController.speakButtonPressed(_:)))
         tapGesture.numberOfTapsRequired = 1
         imageView.addGestureRecognizer(tapGesture)
     }
     
-    @IBAction func speakButtonPressed(_ sender: UIButton) {
-        speakWord()
-    }
-    func speakWord(){
-        let utterance = AVSpeechUtterance(string: currentWord.word)
-        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-        utterance.rate = AVSpeechUtteranceDefaultSpeechRate - 0.1
-        speechSynthesizer.speak(utterance)
-   }
     func addGesture(){
         if let gess = self.view.gestureRecognizers, gess.count == 0 {
             self.view.addGestureRecognizer(pan)
@@ -165,44 +190,6 @@ class ViewController: BaseViewController {
             originalletters[i].textColor = self.colorOriginalLetterDragged
         }
     }
-    @IBAction func menuShowing(_ sender: UIBarButtonItem) {
-        if menuShown {
-            leadingContraint.constant = 0
-            UIView.animate(withDuration: 0.3, animations: {
-                self.view.layoutIfNeeded()
-            })
-            imageView.isHidden = true
-        }else {
-            leadingContraint.constant = -145
-            imageView.isHidden = false
-        }
-        menuShown = !menuShown
-    }
-    
-    @IBAction func menuItemSelecting(_ sender: UIButton) {
-        switch sender.currentTitle! {
-        case "Fruit":
-            PPBWordService.words = PPBWordService.fruit
-        case "People":
-            PPBWordService.words = PPBWordService.people
-        case "Kitchenware":
-            PPBWordService.words = PPBWordService.kitchenware
-        case "Furniture":
-            PPBWordService.words = PPBWordService.furniture
-        case "Objects":
-            PPBWordService.words = PPBWordService.objects
-        case "Clothing":
-            PPBWordService.words = PPBWordService.clothing
-            
-        default:
-            PPBWordService.words = PPBWordService.animal
-        }
-        leadingContraint.constant = -140
-        imageView.isHidden = false
-        menuShown = true
-        PPBWordService.doneItems = []
-        chooseWord()
-    }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         result = ""
@@ -236,7 +223,7 @@ class ViewController: BaseViewController {
         createDestinationViews()
         answerMode = false
         answerBarItemClick()
-        speakWord()
+        currentWord.speak()
     }
     
     func clearConstraint(){
@@ -263,13 +250,6 @@ class ViewController: BaseViewController {
             label.index = i
             label.dragged = false
             label.textColor = self.colorOriginalLetter
-            /*
-                if traitCollection.verticalSizeClass == .compact{
-                    label.textColor = LetterColor.originalLetterDraggedHeightCompact.value
-                }else{
-                    label.textColor =
-                }
-             */
             originalletters.append(label)
         }
         originalStackView = makeStackView(listOfLabel: originalletters, in: originArea)
@@ -278,7 +258,6 @@ class ViewController: BaseViewController {
         }
         originArea.layoutIfNeeded()
         originArea.updateConstraints()
-        
     }
     
     func createDestinationViews() {
@@ -424,24 +403,4 @@ class ViewController: BaseViewController {
     
    
 }
-extension String{
-    subscript (i: Int) -> Character {
-        return self[index(startIndex, offsetBy: i)]
-    }
-    subscript (i: Int) -> String {
-        return String(self[i] as Character)
-    }
-}
-extension UIUserInterfaceSizeClass: CustomStringConvertible{
-    public var description: String {
-        switch self {
-        case .compact:
-            return "Compact"
-        case .regular:
-            return "Regular"
-        default:
-            return "??"
-        }
-        
-    }
-}
+

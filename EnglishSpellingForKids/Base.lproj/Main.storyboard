@@ -26,6 +26,53 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="GDC-Ee-PBq">
                                 <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                             </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="5wW-5a-v4l">
+                                <rect key="frame" x="237" y="65" width="400" height="300"/>
+                                <subviews>
+                                    <view verifyAmbiguity="off" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kTG-Bs-hem">
+                                        <rect key="frame" x="0.0" y="0.0" width="400" height="86.5"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" notEnabled="YES"/>
+                                        </accessibility>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F5R-4g-eua">
+                                        <rect key="frame" x="0.0" y="106.5" width="400" height="87"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VWM-Pb-oSK">
+                                        <rect key="frame" x="0.0" y="213.5" width="400" height="86.5"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8su-Rf-hNV">
+                                                <rect key="frame" x="166" y="5" width="68" height="38"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
+                                                <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                                <state key="normal" title="Done">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="uC8-oe-39v" kind="show" id="WaI-C2-F9N"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="8su-Rf-hNV" firstAttribute="top" secondItem="VWM-Pb-oSK" secondAttribute="top" constant="5" id="2SS-BB-KaH"/>
+                                            <constraint firstItem="8su-Rf-hNV" firstAttribute="centerX" secondItem="VWM-Pb-oSK" secondAttribute="centerX" id="2iE-w7-Ag9"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                            <imageView verifyAmbiguity="ignoreSizes" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TUu-hm-CnQ">
+                                <rect key="frame" x="20" y="113.5" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="TUu-hm-CnQ" secondAttribute="height" multiplier="1:1" id="sLK-af-6yT"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vcf-De-x3M">
+                                <rect key="frame" x="10" y="84" width="25" height="25"/>
+                                <state key="normal" image="speaker"/>
+                                <connections>
+                                    <action selector="speakButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vW6-S5-eAP"/>
+                                </connections>
+                            </button>
                             <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rl8-Pd-WPP">
                                 <rect key="frame" x="-140" y="52" width="140" height="323"/>
                                 <subviews>
@@ -99,53 +146,6 @@
                                     <constraint firstItem="hqP-fY-Lqi" firstAttribute="centerX" secondItem="Rl8-Pd-WPP" secondAttribute="centerX" id="SxQ-47-xb4"/>
                                 </constraints>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="5wW-5a-v4l">
-                                <rect key="frame" x="237" y="65" width="400" height="300"/>
-                                <subviews>
-                                    <view verifyAmbiguity="off" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kTG-Bs-hem">
-                                        <rect key="frame" x="0.0" y="0.0" width="400" height="86.5"/>
-                                        <accessibility key="accessibilityConfiguration">
-                                            <accessibilityTraits key="traits" notEnabled="YES"/>
-                                        </accessibility>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F5R-4g-eua">
-                                        <rect key="frame" x="0.0" y="106.5" width="400" height="87"/>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VWM-Pb-oSK">
-                                        <rect key="frame" x="0.0" y="213.5" width="400" height="86.5"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8su-Rf-hNV">
-                                                <rect key="frame" x="166" y="5" width="68" height="38"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
-                                                <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
-                                                <state key="normal" title="Done">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <connections>
-                                                    <segue destination="uC8-oe-39v" kind="show" id="WaI-C2-F9N"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="8su-Rf-hNV" firstAttribute="top" secondItem="VWM-Pb-oSK" secondAttribute="top" constant="5" id="2SS-BB-KaH"/>
-                                            <constraint firstItem="8su-Rf-hNV" firstAttribute="centerX" secondItem="VWM-Pb-oSK" secondAttribute="centerX" id="2iE-w7-Ag9"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                            </stackView>
-                            <imageView verifyAmbiguity="ignoreSizes" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TUu-hm-CnQ">
-                                <rect key="frame" x="20" y="113.5" width="200" height="200"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="TUu-hm-CnQ" secondAttribute="height" multiplier="1:1" id="sLK-af-6yT"/>
-                                </constraints>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vcf-De-x3M">
-                                <rect key="frame" x="10" y="84" width="25" height="25"/>
-                                <state key="normal" image="speaker"/>
-                                <connections>
-                                    <action selector="speakButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vW6-S5-eAP"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
