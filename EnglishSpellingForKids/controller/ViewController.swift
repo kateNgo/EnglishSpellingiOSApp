@@ -17,6 +17,11 @@ class ViewController: BaseViewController {
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var originArea: UIView!
     @IBOutlet var destinationArea: UIView!
+    @IBOutlet weak var stackButtons: UIStackView!
+    @IBOutlet var starButton: UIButton!
+    @IBOutlet var speakerButton: UIButton!
+    
+    @IBOutlet weak var yourWordsButton: UIButton!
     var dragContext: DragContext?
     var menuShown = true
     let paddingLetter: Double = 3.0
@@ -63,6 +68,11 @@ class ViewController: BaseViewController {
             chooseWord()
             ViewController.nextWord = false
         }
+        if PPBWordService.yourWords.count == 0 {
+            self.yourWordsButton.isEnabled = false
+        }else{
+            self.yourWordsButton.isEnabled = true
+        }
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -76,6 +86,14 @@ class ViewController: BaseViewController {
                 }
             }
         }, completion: nil)
+    }
+    
+    @IBAction func starButtonPressed(_ sender: Any) {
+        PPBWordService.yourWords.append(currentWord)
+        starButton.isEnabled = false
+        if !yourWordsButton.isEnabled {
+            yourWordsButton.isEnabled = true
+        }
     }
     @IBAction func speakButtonPressed(_ sender: UIButton) {
         currentWord.speak()
@@ -107,7 +125,8 @@ class ViewController: BaseViewController {
             PPBWordService.words = PPBWordService.objects
         case "Clothing":
             PPBWordService.words = PPBWordService.clothing
-            
+        case "Your Words":
+            PPBWordService.words = PPBWordService.yourWords
         default:
             PPBWordService.words = PPBWordService.animal
         }
@@ -224,6 +243,11 @@ class ViewController: BaseViewController {
         answerMode = false
         answerBarItemClick()
         currentWord.speak()
+        if PPBWordService.yourWords.contains(currentWord){
+            starButton.isEnabled = false
+        }else{
+            starButton.isEnabled = true
+        }
     }
     
     func clearConstraint(){
@@ -283,6 +307,7 @@ class ViewController: BaseViewController {
             for letter in originalletters {
                 if  checkDraggableForOriginalLetters(forLetter: letter, withRecognizer: rec){
                     let draggingLetter = letter.copyLetter()
+                    service.speak(letter: letter.text!)
                     rec.view?.addSubview(draggingLetter)
                     dragContext = DragContext.init(withDraggedView: draggingLetter)
                     letter.textColor = self.colorOriginalLetterDragged

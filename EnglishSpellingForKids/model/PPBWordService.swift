@@ -8,8 +8,8 @@
 
 import Foundation
 import UIKit
-
 import AudioToolbox
+import AVFoundation
 
 enum PPBCategory: String {
     case fruit
@@ -46,6 +46,7 @@ enum PPBCategory: String {
 class PPBWordService {
     
     static var doneItems: [PPBWord] = []
+    static var yourWords: [PPBWord] = []
     static var fruit: [PPBWord] {
         var data : [PPBWord] = []
         data.append(PPBWord.init(word: "apricot", imageFile: "apricot.png", category: PPBCategory.fruit, note: ""))
@@ -468,6 +469,13 @@ class PPBWordService {
             AudioServicesPlaySystemSound(soundId)
             
         }
+    }
+    func speak(letter str: String){
+        let speechSynthesizer = AVSpeechSynthesizer()
+        let utterance = AVSpeechUtterance(string: str)
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        utterance.rate = AVSpeechUtteranceDefaultSpeechRate - 0.1
+        speechSynthesizer.speak(utterance)
     }
 }
 extension String{
