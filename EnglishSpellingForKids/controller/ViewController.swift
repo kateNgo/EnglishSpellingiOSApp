@@ -12,7 +12,9 @@ import AVFoundation
 class ViewController: BaseViewController {
 
     @IBOutlet var doneButton: UIButton!
+    
     @IBOutlet var leadingContraint: NSLayoutConstraint!
+    
     @IBOutlet var menuView: UIView!
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var originArea: UIView!
@@ -89,21 +91,23 @@ class ViewController: BaseViewController {
     }
     
     @IBAction func starButtonPressed(_ sender: Any) {
-        if starButton.image(for: .normal) == starOnImage{
+        if starButton.image(for: .normal) == starOffImage{
             PPBWordService.yourWords.append(currentWord)
-            starButton.setImage(starOffImage, for:.normal)
+            starButton.setImage(starOnImage, for:.normal)
         }else{
             service.removeYourWord(word: currentWord)
-            starButton.setImage(starOnImage, for:.normal)
+            starButton.setImage(starOffImage, for:.normal)
         }
         processYourWordsButton()
     }
     private func processYourWordsButton(){
         if PPBWordService.yourWords.count == 0 {
-            yourWordsButton.isEnabled = false
+            //yourWordsButton.isEnabled = false
+            yourWordsButton.setEnabled(enabled: false)
             PPBWordService.words = PPBWordService.animal
         }else{
-            yourWordsButton.isEnabled = true
+            //yourWordsButton.isEnabled = true
+            yourWordsButton.setEnabled(enabled: true)
         }
     }
     @IBAction func speakButtonPressed(_ sender: UIButton) {
@@ -112,12 +116,13 @@ class ViewController: BaseViewController {
     
     @IBAction func menuShowing(_ sender: UIBarButtonItem) {
         if menuShown {
-            leadingContraint.constant = 0
+            leadingContraint.constant = -20
             UIView.animate(withDuration: 0.3, animations: {
                 self.view.layoutIfNeeded()
             })
         }else {
-            leadingContraint.constant = -145
+            leadingContraint.constant = -160
+            
         }
         menuShown = !menuShown
     }
@@ -141,7 +146,7 @@ class ViewController: BaseViewController {
         default:
             PPBWordService.words = PPBWordService.animal
         }
-        leadingContraint.constant = -140
+        leadingContraint.constant = -160
         menuShown = true
         PPBWordService.doneItems = []
         chooseWord()
@@ -255,10 +260,9 @@ class ViewController: BaseViewController {
         answerBarItemClick()
         currentWord.speak()
         if PPBWordService.yourWords.contains(currentWord){
-            starButton.setImage(starOffImage, for: .normal)
-            //starButton.isEnabled = false
-        }else{
             starButton.setImage(starOnImage, for: .normal)
+        }else{
+            starButton.setImage(starOffImage, for: .normal)
         }
         
     }

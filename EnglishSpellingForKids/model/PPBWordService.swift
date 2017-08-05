@@ -512,4 +512,10 @@ extension UIUserInterfaceSizeClass: CustomStringConvertible{
         
     }
 }
+extension UIButton{
+    func setEnabled(enabled : Bool){
+        isEnabled = enabled
+        self.setTitleColor(UIColor.gray, for: .disabled)
+    }
+}
 
