@@ -60,14 +60,35 @@
                                     </view>
                                 </subviews>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="j8w-zc-ydj">
+                                <rect key="frame" x="289" y="74" width="60" height="25"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vcf-De-x3M">
+                                        <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                                        <state key="normal" image="speaker"/>
+                                        <connections>
+                                            <action selector="speakButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vW6-S5-eAP"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EcQ-9K-Qcs">
+                                        <rect key="frame" x="35" y="0.0" width="25" height="25"/>
+                                        <state key="normal" image="star_on"/>
+                                        <connections>
+                                            <action selector="starButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="j61-Hz-5JB"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <variation key="heightClass=compact" alignment="fill" axis="horizontal" distribution="fillEqually"/>
+                                <variation key="heightClass=regular" alignment="fill" axis="horizontal" distribution="fillEqually"/>
+                            </stackView>
                             <imageView verifyAmbiguity="ignoreSizes" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TUu-hm-CnQ">
                                 <rect key="frame" x="87.5" y="140" width="200" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="TUu-hm-CnQ" secondAttribute="height" multiplier="1:1" id="sLK-af-6yT"/>
                                 </constraints>
                             </imageView>
-                            <view tag="2" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rl8-Pd-WPP">
-                                <rect key="frame" x="0.0" y="52" width="140" height="615"/>
+                            <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rl8-Pd-WPP">
+                                <rect key="frame" x="-140" y="64" width="140" height="603"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hqP-fY-Lqi">
                                         <rect key="frame" x="7" y="20" width="126" height="350"/>
@@ -147,27 +168,6 @@
                                     <constraint firstItem="hqP-fY-Lqi" firstAttribute="centerX" secondItem="Rl8-Pd-WPP" secondAttribute="centerX" id="SxQ-47-xb4"/>
                                 </constraints>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="j8w-zc-ydj">
-                                <rect key="frame" x="289" y="74" width="60" height="25"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vcf-De-x3M">
-                                        <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
-                                        <state key="normal" image="speaker"/>
-                                        <connections>
-                                            <action selector="speakButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vW6-S5-eAP"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EcQ-9K-Qcs">
-                                        <rect key="frame" x="35" y="0.0" width="25" height="25"/>
-                                        <state key="normal" image="star_on"/>
-                                        <connections>
-                                            <action selector="starButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="j61-Hz-5JB"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <variation key="heightClass=compact" alignment="fill" axis="horizontal" distribution="fillEqually"/>
-                                <variation key="heightClass=regular" alignment="fill" axis="horizontal" distribution="fillEqually"/>
-                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -184,8 +184,8 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="5wW-5a-v4l" secondAttribute="bottom" constant="20" id="HFZ-k9-2Es">
                                 <variation key="heightClass=compact" constant="10"/>
                             </constraint>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Rl8-Pd-WPP" secondAttribute="bottom" id="KFh-HT-v0a"/>
-                            <constraint firstItem="Rl8-Pd-WPP" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="52" id="SxB-hS-r6a"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Rl8-Pd-WPP" secondAttribute="bottom" id="KbU-g3-ZPk"/>
+                            <constraint firstItem="Rl8-Pd-WPP" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="OsI-sd-bXm"/>
                             <constraint firstItem="TUu-hm-CnQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="VtK-1L-fMN"/>
                             <constraint firstItem="GDC-Ee-PBq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="apm-LT-R4r"/>
                             <constraint firstItem="5wW-5a-v4l" firstAttribute="top" secondItem="TUu-hm-CnQ" secondAttribute="bottom" constant="50" id="b4X-ps-WXj"/>
@@ -227,7 +227,6 @@
                                 <exclude reference="VtK-1L-fMN"/>
                                 <include reference="tfN-ey-2Qc"/>
                                 <include reference="y9b-PC-KP4"/>
-                                <include reference="SxB-hS-r6a"/>
                                 <include reference="nd1-ZC-KMj"/>
                                 <include reference="35g-5w-cHq"/>
                                 <exclude reference="9Z6-ue-vm1"/>
@@ -237,7 +236,6 @@
                                 <include reference="kiW-HX-Ag7"/>
                                 <include reference="ohj-Ce-gaj"/>
                                 <include reference="HFZ-k9-2Es"/>
-                                <include reference="KFh-HT-v0a"/>
                                 <exclude reference="xBG-9J-IkO"/>
                             </mask>
                         </variation>
@@ -252,13 +250,11 @@
                                 <include reference="xZb-9A-pLc"/>
                                 <include reference="9ib-76-TDi"/>
                                 <include reference="VtK-1L-fMN"/>
-                                <include reference="SxB-hS-r6a"/>
                                 <include reference="nd1-ZC-KMj"/>
                                 <include reference="9Z6-ue-vm1"/>
                                 <include reference="DTb-GK-c4Q"/>
                                 <include reference="b4X-ps-WXj"/>
                                 <include reference="bPo-KH-cD4"/>
-                                <include reference="KFh-HT-v0a"/>
                                 <include reference="xBG-9J-IkO"/>
                             </mask>
                         </variation>
@@ -285,7 +281,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1111.2" y="102.99850074962519"/>
+            <point key="canvasLocation" x="1110.4947526236883" y="101.59999999999999"/>
         </scene>
         <!--Result View Controller-->
         <scene sceneID="Y9u-dD-xON">

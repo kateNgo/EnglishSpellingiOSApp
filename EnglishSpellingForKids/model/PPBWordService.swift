@@ -430,28 +430,32 @@ class PPBWordService {
     }
     static var words : [PPBWord] = []
     
-    /*
+    
     // This is for test
-    static var index = -1
-    func  chooseRandomWord() -> PPBWord{
-        if PPBWordService.index >= PPBWordService.words.count - 1 {
-            PPBWordService.index = 0
+    static var indexYourWords = -1
+    private func  chooseWordInYourWords() -> PPBWord{
+        if PPBWordService.indexYourWords >= PPBWordService.words.count - 1 {
+            PPBWordService.indexYourWords = 0
         }else {
-            PPBWordService.index = PPBWordService.index + 1
+            PPBWordService.indexYourWords = PPBWordService.indexYourWords + 1
         }
-        return PPBWordService.words[PPBWordService.index]
+        return PPBWordService.words[PPBWordService.indexYourWords]
         
         
     }
-     */
+    
     func chooseRandomWord() -> PPBWord{
-        if PPBWordService.doneItems.count == PPBWordService.words.count {
-            PPBWordService.doneItems = []
-        }
-        while true {
-            let random = Int(arc4random_uniform(UInt32(PPBWordService.words.count)))
-            if  !PPBWordService.doneItems.contains(PPBWordService.words[random]){
-                return PPBWordService.words[random]
+        if PPBWordService.words == PPBWordService.yourWords{
+            return chooseWordInYourWords()
+        }else{
+            if PPBWordService.doneItems.count == PPBWordService.words.count {
+                PPBWordService.doneItems = []
+            }
+            while true {
+                let random = Int(arc4random_uniform(UInt32(PPBWordService.words.count)))
+                if  !PPBWordService.doneItems.contains(PPBWordService.words[random]){
+                    return PPBWordService.words[random]
+                }
             }
         }
     }
@@ -476,6 +480,15 @@ class PPBWordService {
         utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
         utterance.rate = AVSpeechUtteranceDefaultSpeechRate - 0.1
         speechSynthesizer.speak(utterance)
+    }
+    func removeYourWord(word : PPBWord){
+        if let index = PPBWordService.yourWords.index(of:word) {
+            PPBWordService.yourWords.remove(at: index)
+        }
+        PPBWordService.words = PPBWordService.yourWords
+        if PPBWordService.indexYourWords >= PPBWordService.words.count {
+                PPBWordService.indexYourWords = 0
+        }
     }
 }
 extension String{

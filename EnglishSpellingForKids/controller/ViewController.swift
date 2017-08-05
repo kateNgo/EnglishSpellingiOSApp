@@ -37,6 +37,10 @@ class ViewController: BaseViewController {
     var answerButton: UIBarButtonItem = UIBarButtonItem.init()
     var  undoButton = UIBarButtonItem()
     var pan = UIPanGestureRecognizer()
+    let starOnImage = UIImage.init(named: "star_on")
+    let starOffImage = UIImage.init(named: "star_off")
+    
+    
     var colorOriginalLetter: UIColor {
         if traitCollection.verticalSizeClass == .regular{
             return LetterColor.originalLetterNormal.value
@@ -68,11 +72,7 @@ class ViewController: BaseViewController {
             chooseWord()
             ViewController.nextWord = false
         }
-        if PPBWordService.yourWords.count == 0 {
-            self.yourWordsButton.isEnabled = false
-        }else{
-            self.yourWordsButton.isEnabled = true
-        }
+        processYourWordsButton()
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -89,9 +89,20 @@ class ViewController: BaseViewController {
     }
     
     @IBAction func starButtonPressed(_ sender: Any) {
-        PPBWordService.yourWords.append(currentWord)
-        starButton.isEnabled = false
-        if !yourWordsButton.isEnabled {
+        if starButton.image(for: .normal) == starOnImage{
+            PPBWordService.yourWords.append(currentWord)
+            starButton.setImage(starOffImage, for:.normal)
+        }else{
+            service.removeYourWord(word: currentWord)
+            starButton.setImage(starOnImage, for:.normal)
+        }
+        processYourWordsButton()
+    }
+    private func processYourWordsButton(){
+        if PPBWordService.yourWords.count == 0 {
+            yourWordsButton.isEnabled = false
+            PPBWordService.words = PPBWordService.animal
+        }else{
             yourWordsButton.isEnabled = true
         }
     }
@@ -244,10 +255,12 @@ class ViewController: BaseViewController {
         answerBarItemClick()
         currentWord.speak()
         if PPBWordService.yourWords.contains(currentWord){
-            starButton.isEnabled = false
+            starButton.setImage(starOffImage, for: .normal)
+            //starButton.isEnabled = false
         }else{
-            starButton.isEnabled = true
+            starButton.setImage(starOnImage, for: .normal)
         }
+        
     }
     
     func clearConstraint(){
