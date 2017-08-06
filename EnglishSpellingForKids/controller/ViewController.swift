@@ -35,12 +35,13 @@ class ViewController: BaseViewController {
     var destinationalStackView : UIStackView?
     var result = ""
     let service = PPBWordService()
-    var answerMode = false
     var answerButton: UIBarButtonItem = UIBarButtonItem.init()
     var  undoButton = UIBarButtonItem()
     var pan = UIPanGestureRecognizer()
     let starOnImage = UIImage.init(named: "star_on")
     let starOffImage = UIImage.init(named: "star_off")
+    let answerImage = UIImage.init(named: "answer")
+    let questionImage = UIImage.init(named: "question")
     
     
     var colorOriginalLetter: UIColor {
@@ -64,7 +65,7 @@ class ViewController: BaseViewController {
         setupGestures()
         self.view.addGestureRecognizer(pan)
         self.addUndoButton()
-        self.addAnswerButton(name: "question")
+        self.addAnswerButton()
         chooseWord()
         addTapGesture()
     }
@@ -102,11 +103,9 @@ class ViewController: BaseViewController {
     }
     private func processYourWordsButton(){
         if PPBWordService.yourWords.count == 0 {
-            //yourWordsButton.isEnabled = false
             yourWordsButton.setEnabled(enabled: false)
             PPBWordService.words = PPBWordService.animal
         }else{
-            //yourWordsButton.isEnabled = true
             yourWordsButton.setEnabled(enabled: true)
         }
     }
@@ -175,15 +174,18 @@ class ViewController: BaseViewController {
         pan.maximumNumberOfTouches = 1
         pan.minimumNumberOfTouches = 1
     }
-    
-    private func addAnswerButton(name: String) {
-        if let items = self.navigationItem.rightBarButtonItems, items.count == 3{
-            self.navigationItem.rightBarButtonItems?.remove(at: 2)
+    private func setQuestionButton(answerMode: Bool){
+        if answerMode {
+            answerButton.image = answerImage
+        }else{
+            answerButton.image = questionImage
         }
-        answerButton = UIBarButtonItem.init(image: UIImage.init(named: name), style: .done, target: self, action: #selector(ViewController.answerBarItemClick))
-        self.navigationItem.rightBarButtonItems?.append(answerButton)
-        
     }
+    private func addAnswerButton(){
+        answerButton = UIBarButtonItem.init(image: answerImage, style: .plain, target: self, action: #selector(ViewController.answerBarItemClick))
+        self.navigationItem.rightBarButtonItems?.append(answerButton)
+    }
+ 
     private func addUndoButton() {
         undoButton = UIBarButtonItem.init(image: UIImage.init(named: "undo"), style: .done, target: self, action: #selector(ViewController.undoBarItemClick))
         self.navigationItem.rightBarButtonItems?.append(undoButton)
@@ -196,28 +198,27 @@ class ViewController: BaseViewController {
             originalletters[i].textColor = self.colorOriginalLetter
             destinationalLetters[i].text = ""
         }
-        
     }
+ 
     func answerBarItemClick(){
-        if !answerMode {
+        if answerButton.image == answerImage {
             clearConstraint()
             createOriginViews()
             createDestinationViews()
-            answerMode = true
-            self.addAnswerButton(name: "question")
+            answerButton.image = questionImage
             undoButton.isEnabled = true
             addGesture()
         }else{
             answerPPBWord()
-            answerMode = false
             undoButton.isEnabled = false
-            self.addAnswerButton(name: "answer")
+            answerButton.image = answerImage
             for letter in originalletters {
                 letter.dragged = true
             }
             removeGesture()
         }
     }
+    
     func answerPPBWord(){
         let numberOfLetter = currentWord.word.characters.count
         for i in 0..<numberOfLetter{
@@ -253,10 +254,7 @@ class ViewController: BaseViewController {
         currentWord = service.chooseRandomWord()
         word = String (currentWord.word.characters.sorted())
         self.imageView.image = UIImage(named:currentWord.imageFile)!
-        clearConstraint()
-        createOriginViews()
-        createDestinationViews()
-        answerMode = false
+        setQuestionButton(answerMode: true)
         answerBarItemClick()
         currentWord.speak()
         if PPBWordService.yourWords.contains(currentWord){
@@ -264,7 +262,6 @@ class ViewController: BaseViewController {
         }else{
             starButton.setImage(starOffImage, for: .normal)
         }
-        
     }
     
     func clearConstraint(){
@@ -360,7 +357,6 @@ class ViewController: BaseViewController {
                 }
                 dragContext = nil
             }
-            
         default:
             dragContext = nil
         }
