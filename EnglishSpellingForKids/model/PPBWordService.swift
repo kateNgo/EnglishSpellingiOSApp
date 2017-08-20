@@ -19,6 +19,7 @@ enum PPBCategory: String {
     case clothing
     case animal
     case objects
+    case vegetables
     
     var value: String {
         switch self {
@@ -34,12 +35,14 @@ enum PPBCategory: String {
             return "Clothing"
         case .objects:
             return "Objects"
+        case .vegetables:
+            return "Vegetables"
         default:
             return "People"
         }
     }
     var categories:[PPBCategory]{
-        return  [PPBCategory.fruit, PPBCategory.furniture, PPBCategory.kitchenware,PPBCategory.animal, .clothing, .objects ,PPBCategory.people]
+        return  [PPBCategory.fruit, PPBCategory.furniture, PPBCategory.kitchenware,PPBCategory.animal, .clothing, .objects, .vegetables ,PPBCategory.people]
     }
 }
 
@@ -47,6 +50,45 @@ class PPBWordService {
     
     static var doneItems: [PPBWord] = []
     static var yourWords: [PPBWord] = []
+    static var vegetables: [PPBWord] {
+        var data : [PPBWord] = []
+        data.append(PPBWord.init(word: "basil", imageFile: "basil.png", category: PPBCategory.vegetables, note: ""))
+        data.append(PPBWord.init(word: "bean", imageFile: "bean.png", category: PPBCategory.vegetables, note: ""))
+        data.append(PPBWord.init(word: "beetroot", imageFile: "beetroot.png", category: PPBCategory.vegetables, note: ""))
+        data.append(PPBWord.init(word: "broccoli", imageFile: "broccoli.png", category: PPBCategory.vegetables, note: ""))
+        data.append(PPBWord.init(word: "cabbage", imageFile: "cabbage.png", category: PPBCategory.vegetables, note: ""))
+        data.append(PPBWord.init(word: "capsicum", imageFile: "capsicum.png", category: PPBCategory.vegetables, note: ""))
+        data.append(PPBWord.init(word: "carrot", imageFile: "carrot.png", category: PPBCategory.vegetables, note: ""))
+        data.append(PPBWord.init(word: "cauliflower", imageFile: "cauliflower.png", category: PPBCategory.vegetables, note: ""))
+        data.append(PPBWord.init(word: "celery", imageFile: "celery.png", category: PPBCategory.vegetables, note: ""))
+        data.append(PPBWord.init(word: "chilli", imageFile: "chilli.png", category: PPBCategory.vegetables, note: ""))
+        data.append(PPBWord.init(word: "chives", imageFile: "chives.png", category: PPBCategory.vegetables, note: ""))
+        data.append(PPBWord.init(word: "coriander", imageFile: "coriander.png", category: PPBCategory.vegetables, note: ""))
+        data.append(PPBWord.init(word: "corn", imageFile: "corn.png", category: PPBCategory.vegetables, note: ""))
+        data.append(PPBWord.init(word: "cucumber", imageFile: "cucumber.png", category: PPBCategory.vegetables, note: ""))
+        data.append(PPBWord.init(word: "curcumin", imageFile: "curcumin.png", category: PPBCategory.vegetables, note: ""))
+        data.append(PPBWord.init(word: "dill", imageFile: "dill.png", category: PPBCategory.vegetables, note: ""))
+        data.append(PPBWord.init(word: "eggplant", imageFile: "eggplant.png", category: PPBCategory.vegetables, note: ""))
+        data.append(PPBWord.init(word: "garlic", imageFile: "garlic.png", category: PPBCategory.vegetables, note: ""))
+        data.append(PPBWord.init(word: "ginger", imageFile: "ginger.png", category: PPBCategory.vegetables, note: ""))
+        data.append(PPBWord.init(word: "kohlrabi", imageFile: "kohlrabi.png", category: PPBCategory.vegetables, note: ""))
+        data.append(PPBWord.init(word: "lemongrass", imageFile: "lemongrass.png", category: PPBCategory.vegetables, note: ""))
+        data.append(PPBWord.init(word: "lettuce", imageFile: "lettuce.png", category: PPBCategory.vegetables, note: ""))
+        data.append(PPBWord.init(word: "mint", imageFile: "mint.png", category: PPBCategory.vegetables, note: ""))
+        data.append(PPBWord.init(word: "mushroom", imageFile: "mushroom.png", category: PPBCategory.vegetables, note: ""))
+        data.append(PPBWord.init(word: "onion", imageFile: "onion.png", category: PPBCategory.vegetables, note: ""))
+        data.append(PPBWord.init(word: "parsley", imageFile: "parsley.png", category: PPBCategory.vegetables, note: ""))
+        data.append(PPBWord.init(word: "potato", imageFile: "potato.png", category: PPBCategory.vegetables, note: ""))
+        data.append(PPBWord.init(word: "pea", imageFile: "pea.png", category: PPBCategory.vegetables, note: ""))
+        data.append(PPBWord.init(word: "pumpkin", imageFile: "pumpkin.png", category: PPBCategory.vegetables, note: ""))
+        data.append(PPBWord.init(word: "silverbeet", imageFile: "silverbeet.png", category: PPBCategory.vegetables, note: ""))
+        data.append(PPBWord.init(word: "tamarind", imageFile: "tamarind.png", category: PPBCategory.vegetables, note: ""))
+        data.append(PPBWord.init(word: "tomato", imageFile: "tomato.png", category: PPBCategory.vegetables, note: ""))
+        data.append(PPBWord.init(word: "vegetable", imageFile: "vegetable.png", category: PPBCategory.vegetables, note: ""))
+        data.append(PPBWord.init(word: "zucchini", imageFile: "zucchini.png", category: PPBCategory.vegetables, note: ""))
+        
+        return data
+    }
     static var fruit: [PPBWord] {
         var data : [PPBWord] = []
         data.append(PPBWord.init(word: "apricot", imageFile: "apricot.png", category: PPBCategory.fruit, note: ""))
@@ -440,8 +482,6 @@ class PPBWordService {
             PPBWordService.indexYourWords = PPBWordService.indexYourWords + 1
         }
         return PPBWordService.words[PPBWordService.indexYourWords]
-        
-        
     }
     
     func chooseRandomWord() -> PPBWord{

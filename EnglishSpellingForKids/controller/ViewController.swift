@@ -140,6 +140,8 @@ class ViewController: BaseViewController {
             PPBWordService.words = PPBWordService.objects
         case "Clothing":
             PPBWordService.words = PPBWordService.clothing
+        case "Vegetables":
+            PPBWordService.words = PPBWordService.vegetables
         case "Your Words":
             PPBWordService.words = PPBWordService.yourWords
         default:
