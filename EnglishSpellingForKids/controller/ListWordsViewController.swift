@@ -39,10 +39,19 @@ class ListWordsViewController: UITableViewController {
         cell.wordLabel.text = word.word
         return cell
     }
-    
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return PPBCategory.categories[section].value
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        //let categorySectionView = UIView()
+        let label = UILabel()
+        label.text = PPBCategory.categories[section].value
+        label.textAlignment = .center
+        label.font = UIFont.boldSystemFont(ofSize: 20.0)
+        label.backgroundColor = UIColor.darkGray
+        label.tag = section
+        label.isUserInteractionEnabled = true
+        return label
     }
-    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 30
+    }
 
 }
