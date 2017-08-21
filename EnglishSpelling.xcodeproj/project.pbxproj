@@ -220,6 +220,7 @@
 		645A23841F26B73B004F040C /* raspberry.png in Resources */ = {isa = PBXBuildFile; fileRef = 645A237D1F26B73B004F040C /* raspberry.png */; };
 		645A23861F26B8B5004F040C /* papaya.png in Resources */ = {isa = PBXBuildFile; fileRef = 645A23851F26B8B5004F040C /* papaya.png */; };
 		645A23881F26F3CB004F040C /* EnglishSpellingLaunch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 645A23871F26F3CB004F040C /* EnglishSpellingLaunch Screen.storyboard */; };
+		648B5B821F4951C300E75D51 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648B5B811F4951C300E75D51 /* SettingsViewController.swift */; };
 		648C54BF1F0DD5970043EE6C /* PPBWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648C54BE1F0DD5970043EE6C /* PPBWord.swift */; };
 		648C54C11F0DD72C0043EE6C /* PPBWordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648C54C01F0DD72C0043EE6C /* PPBWordService.swift */; };
 		648C54F41F1DE89C0043EE6C /* bat.png in Resources */ = {isa = PBXBuildFile; fileRef = 648C54DC1F1DE89C0043EE6C /* bat.png */; };
@@ -310,6 +311,8 @@
 		64E827C01F37186B00E90416 /* tomato.png in Resources */ = {isa = PBXBuildFile; fileRef = 64E8279E1F37186B00E90416 /* tomato.png */; };
 		64E827C11F37186B00E90416 /* vegetable.png in Resources */ = {isa = PBXBuildFile; fileRef = 64E8279F1F37186B00E90416 /* vegetable.png */; };
 		64E827C21F37186B00E90416 /* zucchini.png in Resources */ = {isa = PBXBuildFile; fileRef = 64E827A01F37186B00E90416 /* zucchini.png */; };
+		64EC132F1F4AE0B0004C8D3A /* ListWordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EC132E1F4AE0B0004C8D3A /* ListWordsViewController.swift */; };
+		64EC13311F4AEBB7004C8D3A /* WordViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EC13301F4AEBB7004C8D3A /* WordViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -528,6 +531,7 @@
 		645A237D1F26B73B004F040C /* raspberry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = raspberry.png; path = images/fruit/raspberry.png; sourceTree = "<group>"; };
 		645A23851F26B8B5004F040C /* papaya.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = papaya.png; path = images/fruit/papaya.png; sourceTree = "<group>"; };
 		645A23871F26F3CB004F040C /* EnglishSpellingLaunch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "EnglishSpellingLaunch Screen.storyboard"; sourceTree = "<group>"; };
+		648B5B811F4951C300E75D51 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = controller/SettingsViewController.swift; sourceTree = "<group>"; };
 		648C54BE1F0DD5970043EE6C /* PPBWord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PPBWord.swift; path = model/PPBWord.swift; sourceTree = "<group>"; };
 		648C54C01F0DD72C0043EE6C /* PPBWordService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PPBWordService.swift; path = model/PPBWordService.swift; sourceTree = "<group>"; };
 		648C54DC1F1DE89C0043EE6C /* bat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bat.png; path = images/animal/bat.png; sourceTree = "<group>"; };
@@ -618,6 +622,8 @@
 		64E8279E1F37186B00E90416 /* tomato.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tomato.png; path = images/vegetables/tomato.png; sourceTree = "<group>"; };
 		64E8279F1F37186B00E90416 /* vegetable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = vegetable.png; path = images/vegetables/vegetable.png; sourceTree = "<group>"; };
 		64E827A01F37186B00E90416 /* zucchini.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = zucchini.png; path = images/vegetables/zucchini.png; sourceTree = "<group>"; };
+		64EC132E1F4AE0B0004C8D3A /* ListWordsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListWordsViewController.swift; path = controller/ListWordsViewController.swift; sourceTree = "<group>"; };
+		64EC13301F4AEBB7004C8D3A /* WordViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WordViewCell.swift; path = view/WordViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -685,6 +691,7 @@
 				641AC2631EF220A600859BB4 /* LetterLabel.swift */,
 				641AC2651EF2221F00859BB4 /* LetterView.swift */,
 				64D38DB31EFC7B460092A552 /* SwiftGif.swift */,
+				64EC13301F4AEBB7004C8D3A /* WordViewCell.swift */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -695,6 +702,8 @@
 				6427AFF61F2B0E7B00AFD8C0 /* ViewController.swift */,
 				64E0968E1EFBF15200DF38E3 /* ResultViewController.swift */,
 				645A23331F254E2D004F040C /* BaseViewController.swift */,
+				648B5B811F4951C300E75D51 /* SettingsViewController.swift */,
+				64EC132E1F4AE0B0004C8D3A /* ListWordsViewController.swift */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -1426,6 +1435,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6427AFF71F2B0E7B00AFD8C0 /* ViewController.swift in Sources */,
+				648B5B821F4951C300E75D51 /* SettingsViewController.swift in Sources */,
 				648C54BF1F0DD5970043EE6C /* PPBWord.swift in Sources */,
 				648C54C11F0DD72C0043EE6C /* PPBWordService.swift in Sources */,
 				641AC2641EF220A600859BB4 /* LetterLabel.swift in Sources */,
@@ -1433,7 +1443,9 @@
 				6427AFF91F2B0E9800AFD8C0 /* DragContext.swift in Sources */,
 				645A23341F254E2D004F040C /* BaseViewController.swift in Sources */,
 				64D38DB41EFC7B460092A552 /* SwiftGif.swift in Sources */,
+				64EC13311F4AEBB7004C8D3A /* WordViewCell.swift in Sources */,
 				641AC2391EF1FFF600859BB4 /* AppDelegate.swift in Sources */,
+				64EC132F1F4AE0B0004C8D3A /* ListWordsViewController.swift in Sources */,
 				641AC2661EF2221F00859BB4 /* LetterView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

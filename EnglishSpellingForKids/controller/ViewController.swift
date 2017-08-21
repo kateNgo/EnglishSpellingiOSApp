@@ -64,7 +64,7 @@ class ViewController: BaseViewController {
         menuView.layer.shadowRadius = 6
         setupGestures()
         self.view.addGestureRecognizer(pan)
-        self.addUndoButton()
+       // self.addUndoButton()
         self.addAnswerButton()
         chooseWord()
         addTapGesture()

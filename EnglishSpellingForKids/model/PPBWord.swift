@@ -32,10 +32,8 @@ class PPBWord: Equatable {
     }
     
     func speak(){
-        let speechSynthesizer = AVSpeechSynthesizer()
-        let utterance = AVSpeechUtterance(string: word)
-        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-        utterance.rate = AVSpeechUtteranceDefaultSpeechRate - 0.1
-        speechSynthesizer.speak(utterance)
+        if (PPBWordService.pronouncedWord){
+            PPBWordService.pronunciation(text: word)
+        }
     }
 }

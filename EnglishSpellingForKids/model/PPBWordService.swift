@@ -41,15 +41,41 @@ enum PPBCategory: String {
             return "People"
         }
     }
-    var categories:[PPBCategory]{
+    static var categories:[PPBCategory]{
         return  [PPBCategory.fruit, PPBCategory.furniture, PPBCategory.kitchenware,PPBCategory.animal, .clothing, .objects, .vegetables ,PPBCategory.people]
     }
 }
 
 class PPBWordService {
+    static var pronouncedWord: Bool = true
+    static var pronouncedLetter: Bool = true
+    static var volumn = AVSpeechUtteranceDefaultSpeechRate - 0.1
+    static var voiceLanguage = "en-US"
+    static let pronouncedWordLabel = "Pronounced word is "
+    static let pronouncedLetterLabel = "Pronounced letter is "
     
     static var doneItems: [PPBWord] = []
     static var yourWords: [PPBWord] = []
+    static func getWords(category: PPBCategory) -> [PPBWord]{
+        switch category {
+        case .animal:
+            return animal
+        case .clothing:
+            return clothing
+        case .fruit:
+            return fruit
+        case .furniture:
+            return furniture
+        case .kitchenware:
+            return kitchenware
+        case .objects:
+            return objects
+        case .people:
+            return people
+        default:
+            return vegetables
+        }
+    }
     static var vegetables: [PPBWord] {
         var data : [PPBWord] = []
         data.append(PPBWord.init(word: "basil", imageFile: "basil.png", category: PPBCategory.vegetables, note: ""))
@@ -515,12 +541,18 @@ class PPBWordService {
         }
     }
     func speak(letter str: String){
+        if PPBWordService.pronouncedLetter {
+            PPBWordService.pronunciation(text: str)
+        }
+    }
+    static func pronunciation(text str: String){
         let speechSynthesizer = AVSpeechSynthesizer()
         let utterance = AVSpeechUtterance(string: str)
-        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-        utterance.rate = AVSpeechUtteranceDefaultSpeechRate - 0.1
+        utterance.voice =  AVSpeechSynthesisVoice(language: voiceLanguage)
+        utterance.rate = volumn
         speechSynthesizer.speak(utterance)
     }
+    
     func removeYourWord(word : PPBWord){
         if let index = PPBWordService.yourWords.index(of:word) {
             PPBWordService.yourWords.remove(at: index)
@@ -530,6 +562,7 @@ class PPBWordService {
                 PPBWordService.indexYourWords = 0
         }
     }
+    
 }
 extension String{
     subscript (i: Int) -> Character {
