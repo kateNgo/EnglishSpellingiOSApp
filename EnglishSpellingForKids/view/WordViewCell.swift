@@ -12,7 +12,9 @@ class WordViewCell: UITableViewCell {
 
     
     @IBOutlet weak var checkButton: UIButton!
+    
     @IBOutlet weak var wordImage: UIImageView!
+    
     @IBOutlet weak var wordLabel: UILabel!
     
     override func awakeFromNib() {

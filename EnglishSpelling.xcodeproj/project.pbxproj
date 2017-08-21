@@ -311,8 +311,10 @@
 		64E827C01F37186B00E90416 /* tomato.png in Resources */ = {isa = PBXBuildFile; fileRef = 64E8279E1F37186B00E90416 /* tomato.png */; };
 		64E827C11F37186B00E90416 /* vegetable.png in Resources */ = {isa = PBXBuildFile; fileRef = 64E8279F1F37186B00E90416 /* vegetable.png */; };
 		64E827C21F37186B00E90416 /* zucchini.png in Resources */ = {isa = PBXBuildFile; fileRef = 64E827A01F37186B00E90416 /* zucchini.png */; };
-		64EC132F1F4AE0B0004C8D3A /* ListWordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EC132E1F4AE0B0004C8D3A /* ListWordsViewController.swift */; };
 		64EC13311F4AEBB7004C8D3A /* WordViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EC13301F4AEBB7004C8D3A /* WordViewCell.swift */; };
+		64EC13351F4B1668004C8D3A /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EC13341F4B1668004C8D3A /* Section.swift */; };
+		64EC13371F4B182F004C8D3A /* ExpandableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EC13361F4B182F004C8D3A /* ExpandableHeaderView.swift */; };
+		64EC13391F4B1EDC004C8D3A /* WordListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EC13381F4B1EDC004C8D3A /* WordListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -622,8 +624,10 @@
 		64E8279E1F37186B00E90416 /* tomato.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tomato.png; path = images/vegetables/tomato.png; sourceTree = "<group>"; };
 		64E8279F1F37186B00E90416 /* vegetable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = vegetable.png; path = images/vegetables/vegetable.png; sourceTree = "<group>"; };
 		64E827A01F37186B00E90416 /* zucchini.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = zucchini.png; path = images/vegetables/zucchini.png; sourceTree = "<group>"; };
-		64EC132E1F4AE0B0004C8D3A /* ListWordsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListWordsViewController.swift; path = controller/ListWordsViewController.swift; sourceTree = "<group>"; };
 		64EC13301F4AEBB7004C8D3A /* WordViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WordViewCell.swift; path = view/WordViewCell.swift; sourceTree = "<group>"; };
+		64EC13341F4B1668004C8D3A /* Section.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Section.swift; path = model/Section.swift; sourceTree = "<group>"; };
+		64EC13361F4B182F004C8D3A /* ExpandableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExpandableHeaderView.swift; path = view/ExpandableHeaderView.swift; sourceTree = "<group>"; };
+		64EC13381F4B1EDC004C8D3A /* WordListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WordListViewController.swift; path = controller/WordListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -692,6 +696,7 @@
 				641AC2651EF2221F00859BB4 /* LetterView.swift */,
 				64D38DB31EFC7B460092A552 /* SwiftGif.swift */,
 				64EC13301F4AEBB7004C8D3A /* WordViewCell.swift */,
+				64EC13361F4B182F004C8D3A /* ExpandableHeaderView.swift */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -703,7 +708,7 @@
 				64E0968E1EFBF15200DF38E3 /* ResultViewController.swift */,
 				645A23331F254E2D004F040C /* BaseViewController.swift */,
 				648B5B811F4951C300E75D51 /* SettingsViewController.swift */,
-				64EC132E1F4AE0B0004C8D3A /* ListWordsViewController.swift */,
+				64EC13381F4B1EDC004C8D3A /* WordListViewController.swift */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -714,6 +719,7 @@
 				6427AFF81F2B0E9800AFD8C0 /* DragContext.swift */,
 				648C54C01F0DD72C0043EE6C /* PPBWordService.swift */,
 				648C54BE1F0DD5970043EE6C /* PPBWord.swift */,
+				64EC13341F4B1668004C8D3A /* Section.swift */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -1435,17 +1441,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				6427AFF71F2B0E7B00AFD8C0 /* ViewController.swift in Sources */,
+				64EC13371F4B182F004C8D3A /* ExpandableHeaderView.swift in Sources */,
+				64EC13391F4B1EDC004C8D3A /* WordListViewController.swift in Sources */,
 				648B5B821F4951C300E75D51 /* SettingsViewController.swift in Sources */,
 				648C54BF1F0DD5970043EE6C /* PPBWord.swift in Sources */,
 				648C54C11F0DD72C0043EE6C /* PPBWordService.swift in Sources */,
 				641AC2641EF220A600859BB4 /* LetterLabel.swift in Sources */,
 				64E0968F1EFBF15200DF38E3 /* ResultViewController.swift in Sources */,
 				6427AFF91F2B0E9800AFD8C0 /* DragContext.swift in Sources */,
+				64EC13351F4B1668004C8D3A /* Section.swift in Sources */,
 				645A23341F254E2D004F040C /* BaseViewController.swift in Sources */,
 				64D38DB41EFC7B460092A552 /* SwiftGif.swift in Sources */,
 				64EC13311F4AEBB7004C8D3A /* WordViewCell.swift in Sources */,
 				641AC2391EF1FFF600859BB4 /* AppDelegate.swift in Sources */,
-				64EC132F1F4AE0B0004C8D3A /* ListWordsViewController.swift in Sources */,
 				641AC2661EF2221F00859BB4 /* LetterView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
