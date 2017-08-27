@@ -31,6 +31,14 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
         volumnLabel.text = NSString(format: "Volumn: %.1f", volumnSlider.value) as String
         
     }
+    
+    @IBAction func yourWordSetting(_ sender: Any) {
+        
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let wordListViewController = storyBoard.instantiateViewController(withIdentifier: "yourWords") as! WordListViewController
+        self.navigationController?.pushViewController(wordListViewController, animated: true)
+        
+    }
     private func setText(compoment: UILabel, text: String, value: Bool ){
         if value {
             compoment.text = text + "ON"
@@ -38,6 +46,7 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
             compoment.text = text + "OFF"
         }
     }
+    
     func initialValue(){
         pronunciationWordSwitch.isOn = PPBWordService.pronouncedWord
         pronunciationLetterSwitch.isOn = PPBWordService.pronouncedLetter

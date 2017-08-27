@@ -1,21 +1,16 @@
 //
-//  WordViewCell.swift
+//  SettingsTableViewCell.swift
 //  EnglishSpelling
 //
-//  Created by phuong on 21/8/17.
+//  Created by phuong on 27/8/17.
 //  Copyright © 2017 ppben. All rights reserved.
 //
 
 import UIKit
 
-class WordViewCell: UITableViewCell {
+class SettingsTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var checkButton: UIButton!
-    
-    @IBOutlet weak var wordImage: UIImageView!
-    
-    @IBOutlet weak var wordLabel: UILabel!
-    
+    @IBOutlet weak var lable: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

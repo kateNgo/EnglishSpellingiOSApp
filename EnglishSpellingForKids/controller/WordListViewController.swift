@@ -12,10 +12,21 @@ class WordListViewController: UIViewController, UITableViewDelegate, UITableView
 
     @IBOutlet weak var tableView: UITableView!
     var sections: [Section] = []
+    let imageCheckings: [UIImage] = [UIImage.init(named: "unchecked")!, UIImage.init(named: "checked")!]
+    
+    var indicator: UIActivityIndicatorView = UIActivityIndicatorView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.allowsMultipleSelection = true
         prepareSections()
-        // Do any additional setup after loading the view.
+    }
+    func createIndicator(){
+        indicator.center = view.center
+        indicator.hidesWhenStopped = true
+        indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        self.view.addSubview(indicator)
+        indicator.startAnimating()
     }
     func toggleSection(header: ExpandableHeaderView, section: Int) {
         sections[section].expandable = !sections[section].expandable
@@ -35,6 +46,8 @@ class WordListViewController: UIViewController, UITableViewDelegate, UITableView
             let section = Section.init(category: category.value, words: PPBWordService.getWords(category: category), expandable: false)
             sections.append(section)
         }
+        sections[0].expandable = true
+        indicator.stopAnimating()
     }
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 2
@@ -56,15 +69,50 @@ class WordListViewController: UIViewController, UITableViewDelegate, UITableView
         let cellIdentifier = "wordCell"
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? WordViewCell  else {
-            fatalError("The dequeued cell is not an instance of MealTableViewCell.")
+            fatalError("The dequeued cell is not an instance of WordListTableViewCell.")
         }
         let word = sections[indexPath.section].words[indexPath.row]
         cell.wordImage.image = UIImage.init(named: word.imageFile)
         cell.wordLabel.text = word.word
+        if PPBWordService.yourWords.contains(word) {
+            cell.checkButton.imageView?.image = imageCheckings[1]
+        }else{
+            cell.checkButton.imageView?.image = imageCheckings[0]
+        }
+        cell.contentView.backgroundColor = UIColor.white
         return cell
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 44
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) as? WordViewCell else
+        {
+            return
+        }
+        cell.contentView.backgroundColor = UIColor.white
+        cell.checkButton.imageView?.image = imageCheckings[1]
+        let word = sections[indexPath.section].words[indexPath.row]
+        toggleChecked(cell: cell, forWord: word)
+    }
     
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) as? WordViewCell else
+        {
+            return
+        }
+        let word = sections[indexPath.section].words[indexPath.row]
+        toggleChecked(cell: cell, forWord: word)
+    }
+    private func toggleChecked(cell: WordViewCell, forWord word: PPBWord){
+        if PPBWordService.yourWords.contains(word) {
+            cell.checkButton.imageView?.image = imageCheckings[0]
+            if let index = PPBWordService.yourWords.index(of:word) {
+                PPBWordService.yourWords.remove(at: index)
+            }
+        }else{
+            cell.checkButton.imageView?.image = imageCheckings[1]
+            PPBWordService.yourWords.append(word)
+        }
+           }
 }

@@ -13,6 +13,7 @@ class ViewController: BaseViewController {
 
     @IBOutlet var doneButton: UIButton!
     
+    @IBOutlet weak var resetButton: UIButton!
     @IBOutlet var leadingContraint: NSLayoutConstraint!
     
     @IBOutlet var menuView: UIView!
@@ -188,11 +189,14 @@ class ViewController: BaseViewController {
         self.navigationItem.rightBarButtonItems?.append(answerButton)
     }
  
+    @IBAction func resetButtonPressed(_ sender: Any) {
+        resetPlayWord()
+    }
     private func addUndoButton() {
-        undoButton = UIBarButtonItem.init(image: UIImage.init(named: "undo"), style: .done, target: self, action: #selector(ViewController.undoBarItemClick))
+        undoButton = UIBarButtonItem.init(image: UIImage.init(named: "undo"), style: .done, target: self, action: #selector(ViewController.resetPlayWord))
         self.navigationItem.rightBarButtonItems?.append(undoButton)
     }
-    func undoBarItemClick(){
+    func resetPlayWord(){
         let numberOfLetter = word.characters.count
         for i in 0..<numberOfLetter{
             originalletters[i].text = word[i]
@@ -264,6 +268,8 @@ class ViewController: BaseViewController {
         }else{
             starButton.setImage(starOffImage, for: .normal)
         }
+        resetButton.isEnabled = false
+        doneButton.isEnabled = false
     }
     
     func clearConstraint(){
@@ -316,6 +322,24 @@ class ViewController: BaseViewController {
         destinationArea.layoutIfNeeded()
         destinationArea.updateConstraints()
     }
+    func checkForResetButton(){
+        for letter in destinationalLetters {
+            if letter.text != "" {
+                self.resetButton.isEnabled = true
+                return
+            }
+        }
+        self.resetButton.isEnabled = false
+    }
+    func checkForDoneButton(){
+        for letter in destinationalLetters {
+            if letter.text == "" {
+                self.doneButton.isEnabled = false
+                return
+            }
+        }
+        self.doneButton.isEnabled = true
+    }
     
     func pan(_ rec:UIPanGestureRecognizer) {
         switch rec.state {
@@ -357,6 +381,8 @@ class ViewController: BaseViewController {
                 }else {
                    returnOriginalLetter(ForDraggedView: viewBeingDraggedView, withRecognizer: rec)
                 }
+                checkForResetButton()
+                checkForDoneButton()
                 dragContext = nil
             }
         default:

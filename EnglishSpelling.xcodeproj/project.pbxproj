@@ -315,6 +315,7 @@
 		64EC13351F4B1668004C8D3A /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EC13341F4B1668004C8D3A /* Section.swift */; };
 		64EC13371F4B182F004C8D3A /* ExpandableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EC13361F4B182F004C8D3A /* ExpandableHeaderView.swift */; };
 		64EC13391F4B1EDC004C8D3A /* WordListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EC13381F4B1EDC004C8D3A /* WordListViewController.swift */; };
+		64EC133D1F51D652004C8D3A /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EC133C1F51D652004C8D3A /* SettingsTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -628,6 +629,7 @@
 		64EC13341F4B1668004C8D3A /* Section.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Section.swift; path = model/Section.swift; sourceTree = "<group>"; };
 		64EC13361F4B182F004C8D3A /* ExpandableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExpandableHeaderView.swift; path = view/ExpandableHeaderView.swift; sourceTree = "<group>"; };
 		64EC13381F4B1EDC004C8D3A /* WordListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WordListViewController.swift; path = controller/WordListViewController.swift; sourceTree = "<group>"; };
+		64EC133C1F51D652004C8D3A /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsTableViewCell.swift; path = view/SettingsTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -697,6 +699,7 @@
 				64D38DB31EFC7B460092A552 /* SwiftGif.swift */,
 				64EC13301F4AEBB7004C8D3A /* WordViewCell.swift */,
 				64EC13361F4B182F004C8D3A /* ExpandableHeaderView.swift */,
+				64EC133C1F51D652004C8D3A /* SettingsTableViewCell.swift */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -1450,6 +1453,7 @@
 				64E0968F1EFBF15200DF38E3 /* ResultViewController.swift in Sources */,
 				6427AFF91F2B0E9800AFD8C0 /* DragContext.swift in Sources */,
 				64EC13351F4B1668004C8D3A /* Section.swift in Sources */,
+				64EC133D1F51D652004C8D3A /* SettingsTableViewCell.swift in Sources */,
 				645A23341F254E2D004F040C /* BaseViewController.swift in Sources */,
 				64D38DB41EFC7B460092A552 /* SwiftGif.swift in Sources */,
 				64EC13311F4AEBB7004C8D3A /* WordViewCell.swift in Sources */,
